@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef, useCallback } from "react";
 
 const navLinks = [
-  { href: "/projects", label: "PORTFOLIO" },
+  { href: "/projects", label: "PROJECTS" },
   { href: "/about", label: "ABOUT" },
   { href: "/contact", label: "CONTACT" },
 ];
@@ -51,18 +51,18 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="bg-page py-4 fixed top-0 w-full z-[1000] transition-colors duration-300">
+    <header className="bg-page/80 backdrop-blur-md py-4 sticky top-0 w-full z-[1000] transition-colors duration-300">
       <nav className="max-w-[1280px] mx-auto flex justify-between items-center px-4 md:px-6 gap-2 overflow-hidden">
         <Link
           href="/"
-          className="text-xs md:text-sm font-semibold text-foreground no-underline tracking-wide border-[1.5px] border-foreground rounded-3xl px-3 md:px-5 py-2 transition-all duration-200 delay-75 hover:bg-foreground hover:text-page shrink-0 truncate max-w-[55%] md:max-w-none"
+          className="text-xs md:text-sm font-semibold text-foreground no-underline tracking-wide border-[1.5px] border-edge rounded-3xl px-3 md:px-5 py-2 transition-all duration-200 delay-75 hover:bg-edge hover:text-page shrink-0 truncate max-w-[55%] md:max-w-none hover:border-edge-hover"
         >
           <span className="hidden md:inline">SAURABH CHAUHAN | FULL-STACK DEVELOPER</span>
           <span className="md:hidden">SC | DEVELOPER</span>
         </Link>
         <div className="flex items-center gap-3">
           <button
-            className="flex md:hidden flex-col gap-[5px] bg-transparent border-[1.5px] border-foreground rounded-3xl px-3 py-2.5 cursor-pointer"
+            className="flex md:hidden flex-col gap-[5px] bg-transparent border-[1.5px] border-edge rounded-3xl px-3 py-2.5 cursor-pointer hover:border-edge-hover"
             ref={toggleRef}
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Toggle navigation menu"
@@ -72,9 +72,8 @@ export default function Header() {
             <span className="w-5 h-0.5 bg-foreground rounded-sm transition-all duration-300" />
           </button>
           <ul
-            className={`flex list-none ${
-              menuOpen ? "left-0" : "-left-full"
-            } fixed top-[70px] w-full h-[calc(100vh-70px)] bg-page flex-col justify-start items-center pt-10 gap-4 transition-[left] duration-300 ease-in-out md:static md:w-auto md:h-auto md:bg-transparent md:pt-0 md:gap-3 md:flex-row`}
+            className={`flex list-none ${menuOpen ? "left-0" : "-left-full"
+              } fixed top-[70px] w-full h-[calc(100vh-70px)] bg-page flex-col justify-start items-center pt-10 gap-4 transition-[left] duration-300 ease-in-out md:static md:w-auto md:h-auto md:bg-transparent md:pt-0 md:gap-3 md:flex-row`}
             ref={navRef}
             id="navMenu"
           >
@@ -82,11 +81,10 @@ export default function Header() {
               <li key={link.href} className="w-4/5 md:w-auto">
                 <Link
                   href={link.href}
-                  className={`block text-center py-3.5 text-sm md:py-2 md:text-[13px] px-5 cursor-pointer rounded-3xl transition-all duration-200 delay-75 border-[1.5px] border-foreground no-underline tracking-wide font-semibold focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 ${
-                    pathname === link.href
-                      ? "bg-foreground text-page"
-                      : "text-foreground hover:bg-foreground hover:text-page"
-                  }`}
+                  className={`block text-center py-3.5 text-sm md:py-2 md:text-[13px] px-5 cursor-pointer rounded-3xl transition-all duration-200 delay-75 border-[1.5px] border-edge no-underline tracking-wide font-semibold focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 hover:border-edge-hover ${pathname === link.href
+                      ? "bg-edge text-page"
+                      : "text-foreground hover:bg-edge hover:text-page"
+                    }`}
                 >
                   {link.label}
                 </Link>
@@ -94,7 +92,7 @@ export default function Header() {
             ))}
           </ul>
           <button
-            className="w-10 h-10 rounded-full border-[1.5px] border-foreground bg-transparent text-foreground cursor-pointer flex items-center justify-center transition-all duration-200 delay-75 shrink-0 hover:bg-foreground hover:text-page focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+            className="w-10 h-10 rounded-full border-[1.5px] border-edge bg-transparent text-foreground cursor-pointer flex items-center justify-center transition-all duration-200 delay-75 shrink-0 hover:bg-edge hover:text-page hover:border-edge-hover focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
             onClick={toggleTheme}
             aria-label="Toggle dark mode"
           >

@@ -214,7 +214,7 @@ export default function ProjectsPage() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="py-1.5 px-4 bg-transparent border-[1.5px] border-foreground text-foreground no-underline rounded-3xl text-[12px] font-semibold transition-all duration-200 delay-75 hover:bg-foreground hover:text-page focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+                      className="py-1.5 px-4 bg-transparent border-[1.5px] border-edge text-foreground no-underline rounded-3xl text-[12px] font-semibold transition-all duration-200 delay-75 hover:bg-edge hover:text-page hover:border-edge-hover focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
                       key={link.label}
                     >
                       {link.label}
