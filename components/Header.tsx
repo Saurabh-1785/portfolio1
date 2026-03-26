@@ -63,7 +63,7 @@ export default function Header() {
           href="/"
           className="text-xs md:text-sm font-semibold text-foreground no-underline tracking-wide border-[1.5px] border-edge rounded-3xl px-3 md:px-5 py-2 transition-all duration-200 delay-75 hover:bg-btn-hover hover:text-foreground shrink-0 truncate max-w-[55%] md:max-w-none hover:border-edge-hover"
         >
-          <span className="hidden md:inline">SAURABH CHAUHAN | FULL-STACK DEVELOPER</span>
+          <span className="hidden md:inline">SAURABH CHAUHAN | DEVELOPER</span>
           <span className="md:hidden">SC | DEVELOPER</span>
         </Link>
         <div className="flex items-center gap-3">
@@ -87,9 +87,9 @@ export default function Header() {
               <li key={link.href} className="w-4/5 md:w-auto">
                 <Link
                   href={link.href}
-                  className={`block text-center py-3.5 text-sm md:py-2 md:text-[13px] px-5 cursor-pointer rounded-3xl transition-all duration-200 delay-75 border-[1.5px] border-edge no-underline tracking-wide font-semibold focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 hover:border-edge-hover ${pathname === link.href
-                    ? "bg-edge text-page"
-                    : "text-foreground hover:bg-btn-hover hover:text-foreground"
+                  className={`block text-center py-3.5 text-sm md:py-2 md:text-[13px] px-5 cursor-pointer rounded-3xl transition-all duration-200 delay-75 border-[1.5px] no-underline tracking-wide font-semibold focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 ${pathname === link.href
+                    ? "bg-btn-hover text-foreground border-edge-hover"
+                    : "border-edge text-foreground hover:bg-btn-hover hover:text-foreground hover:border-edge-hover"
                     }`}
                 >
                   {link.label}

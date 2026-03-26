@@ -5,6 +5,7 @@ import { useState } from "react";
 const projects = [
   {
     title: "APE AI",
+    imageUrl: "/proj/ape.webp",
     description: `
     Problem: 
     Companies receive large volumes of customer feedback from multiple sources, but this data is unstructured and difficult to analyze. Product teams must manually review, categorize, and convert feedback into requirements, which is time-consuming, error-prone, and often leads to missed insights and delayed product improvements.
@@ -19,6 +20,7 @@ const projects = [
   },
   {
     title: "TEDxNIT Hamirpur Website",
+    imageUrl: "/proj/tedx.webp",
     description: `
     The official TEDx NIT Hamirpur 2026 website, designed and developed to represent the organization’s digital presence. Built with a modern, responsive interface, it delivers a seamless user experience across devices while showcasing events, speakers, and initiatives. The platform ensures structured content delivery, smooth navigation, and a professional interface for engaging audiences and promoting TEDx activities effectively.`,
     tech: [],
@@ -30,6 +32,7 @@ const projects = [
   },
   {
     title: "PathBound",
+    imageUrl: "/proj/pathbound.webp",
     description: `
     Problem:
     Traditional currency exchange and remittance systems expose users to unpredictable exchange rates and hidden fees. In volatile markets, users often receive significantly less than expected, with little transparency or control over the conversion rate. Additionally, there is no mechanism to set conditions like minimum acceptable rates or timing, leaving users dependent on centralized intermediaries.
@@ -45,6 +48,7 @@ const projects = [
   },
   {
     title: "ResumeFlow",
+    imageUrl: "/proj/resumeflow.webp",
     description: `
       An AI-powered CV generator that converts user input into a polished, ATS-optimized resume with professional formatting. It leverages real-time LaTeX compilation to provide instant preview and high-quality PDF output, ensuring accuracy, customization, and a seamless resume-building experience across devices.`,
     tech: ["REACT", "NODE.JS", "LATEX", "GOOGLE GEMINI API"],
@@ -56,6 +60,7 @@ const projects = [
   },
   {
     title: "CodeSync",
+    imageUrl: "/proj/codesync.webp",
     description: `
     Problem:
     Traditional code collaboration relies on version control systems that are not truly real-time, leading to delays, merge conflicts, and inefficient teamwork. Developers often struggle with tracking changes, coordinating edits, and maintaining consistency when multiple people work on the same file simultaneously.
@@ -71,6 +76,7 @@ const projects = [
   },
   {
     title: "VeriJS",
+    imageUrl: "/proj/verijs.webp",
     description: `
     Problem:
     Identifying bugs and code issues in JavaScript often relies on executing the code or manual reviews, which can be time-consuming and error-prone. Many developers miss structural or logical issues early in development, leading to inefficient debugging and reduced code quality. Additionally, existing tools can be complex or lack immediate, visual feedback during coding.
@@ -86,6 +92,7 @@ const projects = [
   },
   {
     title: "Zenith",
+    imageUrl: "/proj/zenith.webp",
     description: `
     Problem:
     Manually assigning tasks to engineers is time-consuming and often inefficient, especially in teams with varying skill sets and workloads. It can lead to poor resource utilization, missed deadlines, and mismatches between task requirements and engineer capabilities.
@@ -100,6 +107,7 @@ const projects = [
   },
   {
     title: "GeoFinder",
+    imageUrl: "/proj/geofinder.webp",
     description: `
     Problem:
     Finding nearby resources like hospitals, restaurants, or services in real-time can be inefficient due to fragmented data sources and lack of intuitive visualization. Traditional systems often fail to provide accurate location-based results, dynamic filtering, and seamless interaction on maps, leading to a poor user experience.
@@ -115,6 +123,7 @@ const projects = [
   },
   {
     title: "ECI-Secure Vote",
+    imageUrl: "/proj/eci.webp",
     description: `
     Problem:
     Traditional voting systems limit accessibility for citizens living abroad or serving in remote locations, while also raising concerns around security, transparency, and voter coercion. Existing digital solutions often struggle to balance privacy, verifiability, and resistance to tampering, making large-scale secure online voting difficult to implement.
@@ -129,6 +138,7 @@ const projects = [
   },
   {
     title: "RBAC",
+    imageUrl: "/proj/rbac.webp",
     description: `
     A Role-Based Access Control (RBAC) system designed to manage and enforce secure authentication and authorization across applications. It implements OAuth-based login and token-driven access control, enabling users to securely authenticate and access resources based on assigned roles and permissions. The system ensures fine-grained control over protected routes, supports scalable user-role management, and follows best practices for session handling and API security, making it suitable for real-world, production-level applications.`,
     tech: ["JWT", "BCRYPT", "EXPRESS.JS"],
@@ -139,6 +149,7 @@ const projects = [
   },
   {
     title: "Interactive Tip Calculator",
+    imageUrl: "/proj/interactive.webp",
     description:
       "A very effective platform to calculate Tip amount and its distribution among every individual.",
     tech: ["HTML", "CSS", "JAVASCRIPT"],
@@ -197,7 +208,7 @@ export default function ProjectsPage() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="flex flex-wrap justify-center gap-6">
         {projects.map((project) => {
           const githubLink = project.links.find(
             (l) => l.label === "View Code" || (l.label === "View" && l.href.includes("github.com"))
@@ -209,10 +220,23 @@ export default function ProjectsPage() {
           return (
             <div
               key={project.title}
-              className="bg-card border-[1.5px] border-edge rounded-[20px] transition-colors duration-200 delay-75 hover:border-edge-hover overflow-hidden relative flex flex-col"
+              className="group bg-card border-[1.5px] border-edge rounded-[20px] transition-all duration-300 hover:border-edge-hover overflow-hidden relative flex flex-col cursor-pointer hover:shadow-[0_0_20px_rgba(20,184,166,0.15)] dark:hover:shadow-[0_0_20px_rgba(13,148,136,0.2)] w-full md:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
             >
               {/* Logo/Header */}
-              <div className="h-[120px] bg-white dark:bg-black" />
+              <div 
+                className="h-[120px] relative overflow-hidden bg-card-alt transition-colors duration-300 group-hover:bg-edge/5"
+                onClick={() => setInfoOpen(project.title)}
+              >
+                {project.imageUrl && (
+                  <img
+                    src={project.imageUrl}
+                    alt={project.title}
+                    className="w-full h-full object-cover filter grayscale contrast-[1.1] brightness-[0.85] transition-all duration-500 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110"
+                  />
+                )}
+                {/* Subtle Theme Overlay */}
+                <div className="absolute inset-0 bg-edge/10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
+              </div>
 
               {/* Card Body */}
               <div className="px-5 md:px-6 pt-4 md:pt-5 pb-5 md:pb-6 bg-edge/10 dark:bg-edge/20 relative flex-1 flex flex-col">
@@ -309,6 +333,31 @@ export default function ProjectsPage() {
         })}
       </div>
 
+      <div className="flex justify-center mt-12 mb-6">
+        <a
+          href="https://github.com/Saurabh-1785?tab=repositories"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-secondary text-sm font-semibold tracking-wider uppercase transition-all duration-200 hover:text-accent flex items-center gap-2 group/link"
+        >
+          See all projects
+          <svg 
+            width="18" 
+            height="18" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2.5" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+            className="transition-transform duration-200 group-hover/link:translate-x-1"
+          >
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </a>
+      </div>
+
       {/* Info Modal */}
       {infoOpen && (
         <div
@@ -353,10 +402,7 @@ export default function ProjectsPage() {
                       {project.title}
                     </h3>
                     <span
-                      className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border-[1.5px] ${project.status === "Completed"
-                        ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-500/30"
-                        : "bg-amber-500/15 text-amber-700 dark:text-amber-400 border-amber-500/30"
-                        }`}
+                      className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border-[1.5px] border-edge bg-card-alt text-secondary transition-all duration-200 delay-75 hover:bg-btn-hover hover:border-edge-hover"
                     >
                       {project.status}
                     </span>
