@@ -40,12 +40,12 @@ export default function GitHubContributionCard() {
       <h3 className="text-sm font-semibold text-label uppercase tracking-wide">
         GitHub Contributions
       </h3>
-      <div className="mt-4 flex justify-center overflow-hidden [&_svg]:max-w-full [&_svg]:h-auto">
+      <div className="mt-4 flex justify-center overflow-x-auto md:overflow-hidden pb-2 md:pb-0 [&_svg]:h-auto md:[&_svg]:max-w-full">
         <GitHubCalendar
           username="Saurabh-1785"
           year="last"
           colorScheme={theme}
-          blockSize={12}
+          blockSize={14}
           blockMargin={4}
           fontSize={14}
           showTotalCount

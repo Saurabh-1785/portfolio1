@@ -78,6 +78,15 @@ body {
   overflow-x: hidden;
 }
 
+/* Hide scrollbar but keep scroll functionality */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 @keyframes modalIn {
   from {
     opacity: 0;

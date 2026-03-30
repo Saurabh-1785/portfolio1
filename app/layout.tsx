@@ -26,7 +26,7 @@ export default function RootLayout({
       </head>
       <body className="bg-page text-foreground font-sans leading-relaxed">
         <Header />
-        <main className="mt-20 min-h-[calc(100vh-80px)] pb-10">
+        <main className="mt-8 md:mt-20 min-h-[calc(100vh-80px)] pb-10">
           <div className="max-w-[1280px] mx-auto px-4 md:px-6">{children}</div>
         </main>
         <Footer />

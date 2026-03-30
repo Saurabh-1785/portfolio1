@@ -12,14 +12,20 @@ import GitHubContributionCard from "@/components/GitHubContributionCard";
 import SpotlightGrid from "@/components/SpotlightGrid";
 
 const skills = [
-  "Python",
   "C/C++",
   "JavaScript",
+  "TypeScript",
   "React",
   "Next.js",
   "HTML/CSS",
   "Git/Github",
   "Node.js",
+  "Express",
+  "Python",
+  "Tailwind",
+  "MongoDB",
+  "PostgreSQL",
+  "Postman",
   "Linux",
 ];
 

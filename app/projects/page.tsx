@@ -220,7 +220,7 @@ export default function ProjectsPage() {
           return (
             <div
               key={project.title}
-              className="group bg-card border-[1.5px] border-edge rounded-[20px] transition-all duration-300 hover:border-edge-hover overflow-hidden relative flex flex-col cursor-pointer hover:shadow-[0_0_20px_rgba(20,184,166,0.15)] dark:hover:shadow-[0_0_20px_rgba(13,148,136,0.2)] w-full md:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+              className="group bg-card border-[1.5px] border-edge rounded-[20px] transition-all duration-300 hover:border-edge-hover overflow-hidden relative flex flex-col cursor-pointer hover:shadow-[0_0_20px_rgba(20,184,166,0.15)] dark:hover:shadow-[0_0_20px_rgba(13,148,136,0.2)] w-full min-[425px]:w-[calc(50%-12px)] md:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
             >
               {/* Logo/Header */}
               <div 
@@ -324,7 +324,7 @@ export default function ProjectsPage() {
                   )}
                 </div>
 
-                <span className="absolute bottom-5 right-5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border-[1.5px] border-edge bg-card-alt text-secondary transition-all duration-200 delay-75 hover:bg-btn-hover hover:border-edge-hover">
+                <span className="hidden md:inline-block absolute bottom-5 right-5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border-[1.5px] border-edge bg-card-alt text-secondary transition-all duration-200 delay-75 hover:bg-btn-hover hover:border-edge-hover">
                   {project.status}
                 </span>
               </div>

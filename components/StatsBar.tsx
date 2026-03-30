@@ -43,7 +43,7 @@ export default function StatsBar() {
     >
       {/* Lottie Animation overlay - always visible, plays only on hover */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[70%] md:w-[42%] aspect-square dark:brightness-75 dark:saturate-150 transition-[filter] duration-300">
+        <div className="w-[45%] md:w-[42%] aspect-square dark:brightness-75 dark:saturate-150 transition-[filter] duration-300">
           <DotLottieReact
             src="https://lottie.host/da007cef-0fe3-44c1-b89a-176f561b099d/w78GrXdpDz.lottie"
             loop

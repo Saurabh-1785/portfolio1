@@ -60,10 +60,10 @@ export default function Header() {
       <nav className="max-w-[1280px] mx-auto flex justify-between items-center px-4 md:px-6 gap-2 overflow-hidden">
         <Link
           href="/"
-          className="text-xs md:text-sm font-semibold text-foreground no-underline tracking-wide border-[1.5px] border-edge rounded-3xl px-3 md:px-5 py-2 transition-all duration-200 delay-75 hover:bg-btn-hover hover:text-foreground shrink-0 truncate max-w-[55%] md:max-w-none hover:border-edge-hover"
+          className="text-[10px] md:text-sm font-semibold text-foreground no-underline tracking-wide border-[1.5px] border-edge rounded-3xl px-3 md:px-5 py-2 transition-all duration-200 delay-75 hover:bg-btn-hover hover:text-foreground shrink-0 truncate max-w-[65%] md:max-w-none hover:border-edge-hover"
         >
           <span className="hidden md:inline">SAURABH CHAUHAN | DEVELOPER</span>
-          <span className="md:hidden">SC | DEVELOPER</span>
+          <span className="md:hidden">SAURABH CHAUHAN</span>
         </Link>
         <div className="flex items-center gap-3">
           <button

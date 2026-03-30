@@ -19,17 +19,17 @@ const Footer = () => {
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
 
       {/* Main Footer Content - Using Flex for precise right-alignment */}
-      <div className="max-w-[1280px] mx-auto px-6 flex flex-col md:flex-row md:justify-between items-start gap-12 md:gap-4 relative">
+      <div className="max-w-[1280px] mx-auto px-6 flex flex-col md:flex-row md:justify-between items-center md:items-start gap-12 md:gap-4 relative">
 
         {/* Left Side - Branding & Map */}
-        <div className="flex flex-col gap-6 w-full md:w-[320px] shrink-0">
-          <div className="flex flex-col gap-4">
-            <h2 className="text-2xl font-black tracking-tighter text-foreground group cursor-default">
+        <div className="flex flex-col items-center md:items-start gap-6 w-full md:w-[320px] shrink-0">
+          <div className="flex flex-col items-center md:items-start gap-4">
+            <h2 className="text-2xl font-black tracking-tighter text-foreground group cursor-default text-center md:text-left">
               <span className="text-accent group-hover:text-foreground transition-colors duration-300">
                 SAURABH CHAUHAN
               </span>
             </h2>
-            <div className="flex items-center gap-2 text-muted text-xs font-semibold tracking-wider uppercase">
+            <div className="flex items-center justify-center md:justify-start gap-2 text-muted text-xs font-semibold tracking-wider uppercase">
               <svg
                 width="16"
                 height="16"
@@ -111,7 +111,7 @@ const Footer = () => {
         </div>
 
         {/* Right Side - Contact & Socials (True Right-Alignment) */}
-        <div className="flex flex-col items-start md:items-start md:w-[240px] shrink-0">
+        <div className="flex flex-col items-center md:items-start md:w-[240px] shrink-0">
           <div className="flex gap-6 items-center mb-10">
             {[
               {
@@ -155,9 +155,9 @@ const Footer = () => {
             ))}
           </div>
 
-          <div className="pt-2 w-full">
-            <h4 className="text-foreground font-extrabold text-[12px] uppercase tracking-wider mb-5">Get In Touch</h4>
-            <form onSubmit={handleSubscribe} className="relative group">
+          <div className="pt-2 w-full flex flex-col items-center md:items-start">
+            <h4 className="text-foreground font-extrabold text-[12px] uppercase tracking-wider mb-5 text-center md:text-left w-full">Get In Touch</h4>
+            <form onSubmit={handleSubscribe} className="relative group w-full flex flex-col items-center md:items-start">
               <input
                 type="email"
                 value={email}
@@ -166,7 +166,7 @@ const Footer = () => {
                 required
                 className="w-full bg-transparent border-b border-edge/40 py-2.5 text-[13px] focus:border-accent outline-none transition-all duration-300 placeholder:text-muted/50"
               />
-              <div className="flex">
+              <div className="flex justify-center md:justify-start w-full">
                 <button
                   type="submit"
                   className="mt-5 text-accent hover:text-foreground text-[11px] font-black uppercase tracking-widest transition-all duration-300 hover:translate-x-1.5"

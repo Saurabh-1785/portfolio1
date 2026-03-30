@@ -16,14 +16,14 @@ interface ProjectGridProps {
 export default function ProjectGrid({ projects, onOpenInfo }: ProjectGridProps) {
   return (
     <div className="md:col-span-3 lg:col-span-2 flex flex-col gap-4 overflow-hidden">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 min-[425px]:grid-cols-2 md:grid-cols-2 gap-4">
         {projects.map((project) => (
           <div
             key={project.title}
             data-spotlight-card
             className="bg-card border-[1.5px] border-edge rounded-[20px] transition-colors duration-200 delay-75 hover:border-edge-hover overflow-hidden relative"
           >
-            <div className="h-[120px] md:h-[140px] bg-white dark:bg-black" />
+            <div className="h-[100px] min-[425px]:h-[120px] md:h-[140px] bg-white dark:bg-black" />
             <div className="px-5 md:px-6 pt-4 md:pt-5 pb-5 md:pb-6 bg-edge/10 dark:bg-edge/20 relative">
               <h4 className="text-lg font-bold mb-3">
                 {project.title}
@@ -95,7 +95,7 @@ export default function ProjectGrid({ projects, onOpenInfo }: ProjectGridProps) 
                 )}
               </div>
               <span
-                className={`absolute bottom-5 right-5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border-[1.5px] border-edge bg-card-alt text-secondary transition-all duration-200 delay-75 hover:bg-btn-hover hover:border-edge-hover`}
+                className={`hidden md:inline-block absolute bottom-5 right-5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border-[1.5px] border-edge bg-card-alt text-secondary transition-all duration-200 delay-75 hover:bg-btn-hover hover:border-edge-hover`}
               >
                 {project.status}
               </span>
