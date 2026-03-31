@@ -6,7 +6,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 const navLinks = [
   { href: "/projects", label: "PROJECTS" },
-  { href: "/experience", label: "EXPERIENCE" },
+  { href: "/work", label: "WORK" },
   { href: "/other", label: "OTHER" },
 ];
 
@@ -60,10 +60,10 @@ export default function Header() {
       <nav className="max-w-[1280px] mx-auto flex justify-between items-center px-4 md:px-6 gap-2 overflow-hidden">
         <Link
           href="/"
-          className="text-[10px] md:text-sm font-semibold text-foreground no-underline tracking-wide border-[1.5px] border-edge rounded-3xl px-3 md:px-5 py-2 transition-all duration-200 delay-75 hover:bg-btn-hover hover:text-foreground shrink-0 truncate max-w-[65%] md:max-w-none hover:border-edge-hover"
+          className="text-[12px] md:text-[14px] font-black text-foreground no-underline tracking-[0.15em] transition-all duration-200 hover:text-accent shrink-0 truncate max-w-[65%] md:max-w-none"
         >
-          <span className="hidden md:inline">SAURABH CHAUHAN | DEVELOPER</span>
-          <span className="md:hidden">SAURABH CHAUHAN</span>
+          <span className="hidden md:inline text-foreground">SAURABH <span className="text-secondary font-medium tracking-normal ml-2 opacity-50">| DEVELOPER</span></span>
+          <span className="md:hidden">SAURABH</span>
         </Link>
         <div className="flex items-center gap-3">
           <button
@@ -86,12 +86,15 @@ export default function Header() {
               <li key={link.href} className="w-4/5 md:w-auto">
                 <Link
                   href={link.href}
-                  className={`block text-center py-3.5 text-sm md:py-2 md:text-[13px] px-5 cursor-pointer rounded-3xl transition-all duration-200 delay-75 border-[1.5px] no-underline tracking-wide font-semibold focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 ${pathname === link.href
-                    ? "bg-btn-hover text-foreground border-edge-hover"
-                    : "border-edge text-foreground hover:bg-btn-hover hover:text-foreground hover:border-edge-hover"
-                    }`}
+                  className={`block text-center py-2 text-[11px] md:text-[12px] px-2 cursor-pointer transition-all duration-300 no-underline tracking-[0.2em] font-black uppercase relative group ${
+                    pathname === link.href ? "text-accent" : "text-foreground/60 hover:text-foreground"
+                  }`}
                 >
                   {link.label}
+                  {/* Active/Hover indicator line */}
+                  <span className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full ${
+                    pathname === link.href ? "w-full" : ""
+                  }`} />
                 </Link>
               </li>
             ))}

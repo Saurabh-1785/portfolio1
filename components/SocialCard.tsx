@@ -27,7 +27,9 @@ export default function SocialCard() {
           </svg>
         </a>
         <a
-          href="mailto:saurabhchauhan1785@gmail.com"
+          href="https://mail.google.com/mail/?view=cm&to=saurabhchauhan1785@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
           aria-label="Email"
           className="text-foreground transition-all duration-200 delay-75 flex items-center hover:text-accent hover:scale-[1.15]"
         >
@@ -36,15 +38,26 @@ export default function SocialCard() {
             <path d="M22 4L12 13L2 4" />
           </svg>
         </a>
+        <a
+          href="https://x.com/master_Saurabh_"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Twitter / X"
+          className="text-foreground transition-all duration-200 delay-75 flex items-center hover:text-accent hover:scale-[1.15]"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+        </a>
       </div>
       <div className="flex-1 flex items-center justify-center gap-5 p-6">
         <span className="text-4xl font-extrabold text-foreground leading-none">CV</span>
         <a
           href="/Resume.pdf"
           target="_blank"
-          className="flex items-center gap-2 py-2 px-5 border-[1.5px] border-edge rounded-3xl bg-card text-foreground no-underline text-sm font-medium transition-all duration-200 delay-75 hover:bg-btn-hover hover:text-foreground"
+          className="flex items-center gap-2 py-2 px-1 text-secondary no-underline text-[12px] font-black uppercase tracking-[0.2em] transition-all duration-300 hover:text-accent group/cv"
         >
-          Download <span className="text-base">↓</span>
+          Download <span className="text-base transition-transform duration-300 group-hover/cv:translate-y-1">↓</span>
         </a>
       </div>
     </div>

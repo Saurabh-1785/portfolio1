@@ -135,3 +135,11 @@ body {
     transparent 60%
   );
 }
+
+/* ── Footer Map Scan Line ── */
+@keyframes scanLine {
+  0%, 100% { top: -2px; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: calc(100% + 2px); opacity: 0; }
+}

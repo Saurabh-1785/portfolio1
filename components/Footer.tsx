@@ -49,43 +49,68 @@ const Footer = () => {
           </div>
 
           {/* Stylized Map Section */}
-          <div className="relative w-full h-32 rounded-xl overflow-hidden border border-edge/20 group">
-            <div className="absolute inset-0 bg-[#f9f9f9] dark:bg-[#1a1a1b] transition-colors duration-300">
-              {/* Grid Lines */}
-              <div className="absolute inset-0 opacity-10 dark:opacity-20"
-                style={{ backgroundImage: 'radial-gradient(circle, #888 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
-
-              {/* Map Layout */}
-              <svg className="absolute inset-0 w-full h-full opacity-30 dark:opacity-40" viewBox="0 0 400 200">
-                <path d="M0,50 L400,50 M0,100 L400,100 M0,150 L400,150 M100,0 L100,200 M200,0 L200,200 M300,0 L300,200"
-                  className="stroke-[#ccc] dark:stroke-[#444]" strokeWidth="1" fill="none" />
+          <div className="relative w-full h-32 rounded-xl overflow-hidden border border-edge/20 group cursor-pointer">
+            {/* Smooth AI Background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#f8fafc] to-[#f1f5f9] dark:from-[#0d0d0e] dark:to-[#161618] transition-colors duration-500">
+              
+              {/* Ultra-Smooth Topographic Lines */}
+              <svg className="absolute inset-0 w-full h-full opacity-[0.15] dark:opacity-[0.25]" viewBox="0 0 400 200" preserveAspectRatio="none">
+                <g fill="none" stroke="currentColor" className="text-accent">
+                  <path d="M-50,150 Q100,50 250,150 T550,150" strokeWidth="1.5">
+                    <animate attributeName="d" values="M-50,150 Q100,50 250,150 T550,150; M-50,130 Q120,70 270,130 T550,130; M-50,150 Q100,50 250,150 T550,150" dur="10s" repeatCount="indefinite" />
+                  </path>
+                  <path d="M-50,100 Q150,0 300,100 T650,100" strokeWidth="1" opacity="0.6">
+                    <animate attributeName="d" values="M-50,100 Q150,0 300,100 T650,100; M-50,120 Q130,20 280,120 T650,120; M-50,100 Q150,0 300,100 T650,100" dur="12s" repeatCount="indefinite" />
+                  </path>
+                  <path d="M-50,180 Q80,100 220,180 T520,180" strokeWidth="0.8" opacity="0.4">
+                    <animate attributeName="d" values="M-50,180 Q80,100 220,180 T520,180; M-50,160 Q90,110 230,160 T520,160; M-50,180 Q80,100 220,180 T520,180" dur="8s" repeatCount="indefinite" />
+                  </path>
+                </g>
               </svg>
 
-              {/* Blue Location Indicator */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-1">
-                <div className="relative">
-                  <div className="absolute -inset-2 bg-accent/30 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity duration-300" />
-                  <div className="w-3 h-3 bg-accent rounded-full border-2 border-[#f9f9f9] dark:border-[#1a1a1b] relative z-10 transition-colors" />
-                </div>
-                <span className="text-[10px] font-bold text-foreground bg-page/80 dark:bg-[#111]/80 px-1.5 py-0.5 rounded shadow-sm">Hamirpur</span>
+              {/* Smooth Grid */}
+              <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.07]" 
+                style={{ backgroundImage: 'linear-gradient(currentColor 0.5px, transparent 0.5px), linear-gradient(90deg, currentColor 0.5px, transparent 0.5px)', backgroundSize: '20px 20px' }} />
+
+              {/* The "AI Glow" Scan Line */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute left-0 w-full h-1/2 bg-gradient-to-b from-accent/[0.03] to-transparent -translate-y-full animate-[scanLineSmooth_6s_linear_infinite]" />
               </div>
 
-              {/* Time Badge */}
-              <div className="absolute top-3 right-3 bg-card/90 dark:bg-[#111]/90 border border-edge/30 px-2 py-1 rounded text-[9px] font-mono text-foreground/80 flex items-center gap-2">
-                <span>{new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })} IST</span>
-                <div className="w-1 h-1 bg-accent rounded-full" />
+              {/* Glowing Location Indicator */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-2">
+                <div className="relative">
+                  <div className="absolute -inset-4 bg-accent/20 rounded-full blur-xl animate-pulse" />
+                  <div className="absolute -inset-2 border border-accent/30 rounded-full animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]" />
+                  <div className="w-2.5 h-2.5 bg-accent rounded-full shadow-[0_0_12px_rgba(var(--accent-rgb,20,184,166),0.6)] relative z-10 border-2 border-white dark:border-[#0d0d0e]" />
+                </div>
+                <span className="text-[9px] font-black text-foreground uppercase tracking-wider bg-white/80 dark:bg-[#111]/80 backdrop-blur-md px-2.5 py-0.5 rounded-full shadow-sm border border-edge/10">
+                  Hamirpur, HP
+                </span>
               </div>
+
+              {/* Subtle Vignette */}
+              <div className="absolute inset-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.02)] dark:shadow-[inset_0_0_40px_rgba(0,0,0,0.2)] pointer-events-none" />
             </div>
 
             <a
               href="https://www.google.com/maps/place/Hamirpur,+Himachal+Pradesh"
               target="_blank"
               rel="noopener noreferrer"
-              className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300"
+              className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-accent/5 backdrop-blur-[1px] group/mapbtn"
             >
-              <span className="text-[10px] font-bold text-accent uppercase tracking-widest bg-page/90 px-3 py-1.5 rounded-full border border-accent/30 shadow-lg">View Live Map</span>
+              <span className="text-[11px] font-black text-accent uppercase tracking-[0.2em] transition-all duration-300 group-hover/mapbtn:translate-y-[-2px]">
+                VIEW MAPS →
+              </span>
             </a>
           </div>
+
+          <style jsx global>{`
+            @keyframes scanLineSmooth {
+              0% { transform: translateY(-100%); }
+              100% { transform: translateY(200%); }
+            }
+          `}</style>
         </div>
 
         {/* Middle Side - Navigation Links (Centered) */}
@@ -133,11 +158,11 @@ const Footer = () => {
                 ),
               },
               {
-                name: "Instagram",
-                href: "https://instagram.com",
+                name: "Twitter",
+                href: "https://x.com/master_Saurabh_",
                 icon: (
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                 ),
               },
@@ -181,7 +206,7 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="max-w-[1280px] mx-auto px-6 mt-16 border-t border-edge/10">
-        <div className="flex items-center justify-between gap-8">
+        <div className="flex items-center justify-between gap-8 py-8">
           <p className="text-muted text-[10px] font-bold tracking-[0.1em] uppercase">
             © 2026 SAURABH CHAUHAN
           </p>

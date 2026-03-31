@@ -29,7 +29,7 @@ const skills = [
   "Linux",
 ];
 
-const experiences = [
+const workHistory = [
   {
     title: "Google Developers Groups Ludhiana - NITH Chapter",
     duration: "2024 - Present",
@@ -96,7 +96,7 @@ export default function HomePage() {
         <AboutCard />
         <SocialCard />
         <ExpertiseCard skills={skills} />
-        <ProjectGrid projects={projects} experiences={experiences} onOpenInfo={setInfoOpen} />
+        <ProjectGrid projects={projects} workHistory={workHistory} onOpenInfo={setInfoOpen} />
         <StatsBar />
         <GitHubContributionCard />
       </SpotlightGrid>

@@ -9,39 +9,39 @@ interface Project {
   mobileOnly?: boolean;
 }
 
-interface Experience {
+interface WorkHistory {
   title: string;
   duration: string;
 }
 
 interface ProjectGridProps {
   projects: Project[];
-  experiences: Experience[];
+  workHistory: WorkHistory[];
   onOpenInfo: (title: string) => void;
 }
 
 export default function ProjectGrid({
   projects,
-  experiences,
+  workHistory,
   onOpenInfo,
 }: ProjectGridProps) {
   return (
     <div className="md:col-span-3 lg:col-span-2 flex flex-col gap-4 overflow-hidden">
-      {/* Row 1: Experience Card (full width) */}
+      {/* Row 1: Work Card (full width) */}
       <div
         data-spotlight-card
         className="bg-card border-[1.5px] border-edge rounded-[20px] transition-colors duration-200 delay-75 hover:border-edge-hover overflow-hidden"
       >
         <div className="px-5 md:px-6 pt-5 pb-2">
           <h3 className="text-sm font-semibold text-label uppercase tracking-wide mb-4">
-            Experience
+            Work
           </h3>
           <div className="flex flex-col gap-0">
-            {experiences.map((exp, i) => (
+            {workHistory.map((work, i) => (
               <div
-                key={exp.title}
+                key={work.title}
                 className={`flex items-center justify-between py-3.5 ${
-                  i < experiences.length - 1
+                  i < workHistory.length - 1
                     ? "border-b border-edge/30"
                     : ""
                 }`}
@@ -49,11 +49,11 @@ export default function ProjectGrid({
                 <div className="flex items-center gap-3 min-w-0">
                   <div className="w-2 h-2 rounded-full bg-accent shrink-0" />
                   <h4 className="text-sm font-semibold text-foreground truncate">
-                    {exp.title}
+                    {work.title}
                   </h4>
                 </div>
                 <span className="text-[10px] font-bold text-muted uppercase tracking-wider shrink-0 ml-3">
-                  {exp.duration}
+                  {work.duration}
                 </span>
               </div>
             ))}
@@ -163,10 +163,10 @@ export default function ProjectGrid({
       {/* Row 3: View All Projects */}
       <Link
         href="/projects"
-        className="flex items-center justify-between py-3.5 px-5 bg-btn text-btn-text no-underline rounded-xl text-sm font-semibold transition-colors duration-200 delay-75 hover:bg-btn-hover hover:text-foreground border-[1.5px] border-edge focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+        className="flex items-center justify-between py-3 px-1 text-secondary no-underline text-[12px] font-black uppercase tracking-[0.2em] transition-all duration-300 hover:text-accent group"
       >
-        View All Projects
-        <span className="text-lg">↗</span>
+        <span>View All Projects</span>
+        <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">↗</span>
       </Link>
     </div>
   );
