@@ -203,7 +203,7 @@ const Footer = () => {
             © 2026 SAURABH CHAUHAN
           </p>
           <p className="text-muted text-[10px] font-bold tracking-[0.1em] uppercase">
-            LAST UPDATED: 2026-03-28
+            LAST UPDATED: 2026-05-11
           </p>
         </div>
       </div>

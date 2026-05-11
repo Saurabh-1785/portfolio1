@@ -14,7 +14,9 @@ Solution:
 Automatically transforms raw customer feedback into structured product requirements. It analyzes feedback, identifies key issues, generates validated requirements, and converts them into engineering-ready tasks, enabling faster and more data-driven product decision-making.`,
     tech: ["AI Automation", "REACT"],
     status: "In Progress" as const,
-    links: [],
+    links: [
+      {label: "View Code", href: "https://github.com/Saurabh-1785/apeai.git"},
+    ],
   },
   {
     title: "TEDxNIT Hamirpur Website",
