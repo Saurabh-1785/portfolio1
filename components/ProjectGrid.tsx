@@ -26,11 +26,11 @@ export default function ProjectGrid({
   onOpenInfo,
 }: ProjectGridProps) {
   return (
-    <div className="md:col-span-3 lg:col-span-2 flex flex-col gap-4 overflow-hidden">
+    <div className="md:col-span-3 lg:col-span-2 flex flex-col gap-0 overflow-hidden w-full h-full">
       {/* Row 1: Work Card (full width) */}
       <div
         data-spotlight-card
-        className="bg-card border-[1.5px] border-edge rounded-[20px] transition-colors duration-200 delay-75 hover:border-edge-hover overflow-hidden"
+        className="bg-card transition-colors duration-200 delay-75 overflow-hidden"
       >
         <div className="px-5 md:px-6 pt-5 pb-2">
           <h3 className="text-sm font-semibold text-label uppercase tracking-wide mb-4">
@@ -61,12 +61,12 @@ export default function ProjectGrid({
       </div>
 
       {/* Row 2: Project Cards*/}
-      <div className="grid grid-cols-1 min-[425px]:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 min-[425px]:grid-cols-2 lg:grid-cols-3 gap-0 bg-transparent">
         {projects.map((project) => (
           <div
             key={project.title}
             data-spotlight-card
-            className={`bg-card border-[1.5px] border-edge rounded-[20px] transition-colors duration-200 delay-75 hover:border-edge-hover overflow-hidden relative${project.mobileOnly ? " lg:hidden" : ""
+            className={`bg-card transition-colors duration-200 delay-75 overflow-hidden relative${project.mobileOnly ? " lg:hidden" : ""
               }`}
           >
             <div className="h-[100px] min-[425px]:h-[90px] lg:h-[80px] bg-white dark:bg-black" />
@@ -160,7 +160,7 @@ export default function ProjectGrid({
       {/* Row 3: View All Projects */}
       <Link
         href="/projects"
-        className="flex items-center justify-between py-3.5 px-5 bg-btn text-btn-text no-underline rounded-xl text-sm font-semibold transition-colors duration-200 delay-75 hover:bg-btn-hover hover:text-foreground border-[1.5px] border-edge focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+        className="flex items-center justify-between py-4 px-6 bg-btn text-btn-text no-underline text-sm font-semibold transition-colors duration-200 delay-75 hover:bg-btn-hover hover:text-foreground focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
       >
         View All Projects
         <span className="text-lg">↗</span>

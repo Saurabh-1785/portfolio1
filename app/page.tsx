@@ -91,15 +91,17 @@ export default function HomePage() {
 
   return (
     <>
-      <SpotlightGrid className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 overflow-hidden">
-        <HeroCard />
-        <AboutCard />
-        <SocialCard />
-        <ExpertiseCard skills={skills} />
-        <ProjectGrid projects={projects} workHistory={workHistory} onOpenInfo={setInfoOpen} />
-        <StatsBar />
-        <GitHubContributionCard />
-      </SpotlightGrid>
+      <div className="w-screen relative left-1/2 -translate-x-1/2 -mt-8 md:-mt-20">
+        <SpotlightGrid className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-0 overflow-hidden shadow-2xl">
+          <HeroCard />
+          <AboutCard />
+          <SocialCard />
+          <ExpertiseCard skills={skills} />
+          <ProjectGrid projects={projects} workHistory={workHistory} onOpenInfo={setInfoOpen} />
+          <StatsBar />
+          <GitHubContributionCard />
+        </SpotlightGrid>
+      </div>
 
       <ProjectModal
         projects={projects}

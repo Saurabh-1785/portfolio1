@@ -2,7 +2,7 @@ import React from "react";
 
 export default function HeroCard() {
   return (
-    <div data-spotlight-card className="bg-card border-[1.5px] border-edge rounded-[20px] overflow-hidden transition-colors duration-200 delay-75 hover:border-edge-hover relative p-4 flex flex-col items-center md:min-h-[380px] lg:min-h-[420px] lg:row-span-2">
+    <div data-spotlight-card className="bg-card overflow-hidden transition-colors duration-200 delay-75 relative p-5 flex flex-col items-center md:min-h-[380px] lg:min-h-[420px] lg:row-span-2 w-full h-full">
       <div className="hidden md:flex w-full flex-1 rounded-2xl overflow-hidden relative group/photo">
         <img
           src="/Saurabh(white).webp"

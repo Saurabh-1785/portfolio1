@@ -2,8 +2,8 @@ import React from "react";
 
 export default function SocialCard() {
   return (
-    <div data-spotlight-card className="bg-card border-[1.5px] border-edge rounded-[20px] transition-colors duration-200 delay-75 hover:border-edge-hover overflow-hidden md:col-span-3 lg:col-span-1 flex flex-col">
-      <div className="flex-1 flex items-center justify-center gap-8 p-6 border-b border-edge/40">
+    <div data-spotlight-card className="bg-card transition-colors duration-200 delay-75 overflow-hidden md:col-span-3 lg:col-span-1 flex flex-col w-full h-full">
+      <div className="flex-1 flex items-center justify-center gap-8 p-6">
         <a
           href="https://github.com/Saurabh-1785"
           target="_blank"
