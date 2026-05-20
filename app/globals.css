@@ -82,6 +82,7 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -91,6 +92,7 @@ body {
     opacity: 0;
     transform: scale(0.95) translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -111,12 +113,10 @@ body {
   inset: 0;
   padding: 1.5px;
   border-radius: inherit;
-  background: radial-gradient(
-    350px circle at var(--glow-x) var(--glow-y),
-    rgba(20, 184, 166, calc(var(--glow-intensity) * 0.7)) 0%,
-    rgba(20, 184, 166, calc(var(--glow-intensity) * 0.3)) 30%,
-    transparent 60%
-  );
+  background: radial-gradient(350px circle at var(--glow-x) var(--glow-y),
+      rgba(20, 184, 166, calc(var(--glow-intensity) * 0.7)) 0%,
+      rgba(20, 184, 166, calc(var(--glow-intensity) * 0.3)) 30%,
+      transparent 60%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -127,18 +127,205 @@ body {
 }
 
 [data-theme="dark"] [data-spotlight-card]::before {
-  background: radial-gradient(
-    350px circle at var(--glow-x) var(--glow-y),
-    rgba(13, 148, 136, calc(var(--glow-intensity) * 0.9)) 0%,
-    rgba(13, 148, 136, calc(var(--glow-intensity) * 0.4)) 30%,
-    transparent 60%
-  );
+  background: radial-gradient(350px circle at var(--glow-x) var(--glow-y),
+      rgba(13, 148, 136, calc(var(--glow-intensity) * 0.9)) 0%,
+      rgba(13, 148, 136, calc(var(--glow-intensity) * 0.4)) 30%,
+      transparent 60%);
 }
 
 /* ── Footer Map Scan Line ── */
 @keyframes scanLine {
-  0%, 100% { top: -2px; opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { top: calc(100% + 2px); opacity: 0; }
+
+  0%,
+  100% {
+    top: -2px;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    top: calc(100% + 2px);
+    opacity: 0;
+  }
+}
+
+/* ── Infinite Marquee ── */
+.marquee-container {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 15%,
+      black 85%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 15%,
+      black 85%,
+      transparent 100%);
+}
+
+.marquee-content {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 35s linear infinite;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ── Text Type Cursor Blink ── */
+@keyframes cursorBlink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-cursor-blink {
+  animation: cursorBlink 0.8s step-end infinite;
+}
+
+/* ── Pixel Transition ── */
+.pixelated-image-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.pixelated-image-card__default,
+.pixelated-image-card__active,
+.pixelated-image-card__pixels {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.pixelated-image-card__default {
+  z-index: 1;
+}
+
+.pixelated-image-card__active {
+  z-index: 2;
+  display: none;
+}
+
+.pixelated-image-card__pixels {
+  pointer-events: none;
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pixelated-image-card__pixel {
+  display: none;
+  position: absolute;
+  transform: translateZ(0);
+  /* hardware acceleration */
+}
+
+/* ── Pill Hover Button (View My Work) ── */
+.pill-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background-color: var(--btn-bg, #fff);
+  color: var(--btn-text, #1a1a1a);
+  text-decoration: none;
+  border-radius: 0;
+  font-weight: 600;
+  font-size: 0.875rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: color 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 1;
+}
+
+[data-theme="dark"] .pill-btn {
+  background-color: transparent;
+  color: #fff;
+}
+
+.pill-btn:hover {
+  background-color: #048379;
+  color: #fff;
+}
+
+.pill-btn .pill-btn-label-stack {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 1.25rem;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.pill-btn .pill-btn-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.5rem;
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.pill-btn .pill-btn-label-hover {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.5rem;
+  color: #fff;
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.pill-btn:hover .pill-btn-label {
+  transform: translateY(-100%);
+}
+
+.pill-btn:hover .pill-btn-label-hover {
+  transform: translateY(-100%);
 }

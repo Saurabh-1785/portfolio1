@@ -80,29 +80,59 @@ export default function ExpertiseCard({ skills }: ExpertiseCardProps) {
       <h3 className="text-sm font-semibold text-label uppercase tracking-wide">
         Expertise
       </h3>
-      <div className="flex flex-nowrap overflow-x-auto gap-6 no-scrollbar items-center">
-        {skills.map((skill) => {
-          const info = skillMap[skill];
-          if (!info) return null;
-          return (
-            <div
-              key={skill}
-              className="flex flex-col items-center gap-2.5 shrink-0 group cursor-default"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={info.iconUrl}
-                alt={skill}
-                className={`w-9 h-9 transition-all duration-300 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100${
-                  info.darkInvert ? " dark:invert" : ""
-                }`}
-              />
-              <span className="text-[10px] font-semibold text-muted transition-colors duration-300 group-hover:text-foreground whitespace-nowrap">
-                {skill}
-              </span>
-            </div>
-          );
-        })}
+      <div className="marquee-container my-auto">
+        <div className="marquee-content">
+          {/* First set of skills for seamless infinite looping */}
+          <div className="flex shrink-0 gap-8 items-center px-4">
+            {skills.map((skill) => {
+              const info = skillMap[skill];
+              if (!info) return null;
+              return (
+                <div
+                  key={`${skill}-1`}
+                  className="flex flex-col items-center gap-2.5 shrink-0 group cursor-default"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={info.iconUrl}
+                    alt={skill}
+                    className={`w-9 h-9 transition-all duration-300 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100${
+                      info.darkInvert ? " dark:invert" : ""
+                    }`}
+                  />
+                  <span className="text-[10px] font-semibold text-muted transition-colors duration-300 group-hover:text-foreground whitespace-nowrap">
+                    {skill}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+          {/* Duplicated set of skills for seamless looping (hidden from assistive technologies) */}
+          <div className="flex shrink-0 gap-8 items-center px-4" aria-hidden="true">
+            {skills.map((skill) => {
+              const info = skillMap[skill];
+              if (!info) return null;
+              return (
+                <div
+                  key={`${skill}-2`}
+                  className="flex flex-col items-center gap-2.5 shrink-0 group cursor-default"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={info.iconUrl}
+                    alt={skill}
+                    className={`w-9 h-9 transition-all duration-300 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100${
+                      info.darkInvert ? " dark:invert" : ""
+                    }`}
+                  />
+                  <span className="text-[10px] font-semibold text-muted transition-colors duration-300 group-hover:text-foreground whitespace-nowrap">
+                    {skill}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );

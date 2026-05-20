@@ -55,9 +55,18 @@ export default function SocialCard() {
         <a
           href="/Resume.pdf"
           target="_blank"
-          className="flex items-center gap-2 py-2 px-1 text-secondary no-underline text-[12px] font-black uppercase tracking-[0.2em] transition-all duration-300 hover:text-accent group/cv"
+          className="pill-btn no-underline focus-visible:outline-accent focus-visible:outline-offset-1"
         >
-          Download
+          <span className="pill-btn-label-stack">
+            <span className="pill-btn-label">
+              Download
+              <span className="text-sm">↓</span>
+            </span>
+            <span className="pill-btn-label-hover" aria-hidden="true">
+              Download
+              <span className="text-sm">↓</span>
+            </span>
+          </span>
         </a>
       </div>
     </div>

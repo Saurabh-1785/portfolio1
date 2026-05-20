@@ -12,10 +12,18 @@ export default function AboutCard() {
       </p>
       <Link
         href="/projects"
-        className="flex items-center justify-between py-3.5 px-5 bg-btn text-btn-text no-underline rounded-xl text-sm font-semibold transition-colors duration-200 delay-75 hover:bg-btn-hover hover:text-foreground border-[1.5px] border-edge focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+        className="pill-btn no-underline focus-visible:outline-accent focus-visible:outline-offset-1"
       >
-        View My Work
-        <span className="text-lg">↗</span>
+        <span className="pill-btn-label-stack">
+          <span className="pill-btn-label">
+            View My Work
+            <span className="text-lg">↗</span>
+          </span>
+          <span className="pill-btn-label-hover" aria-hidden="true">
+            View My Work
+            <span className="text-lg">↗</span>
+          </span>
+        </span>
       </Link>
     </div>
   );
