@@ -8,7 +8,7 @@ export default function SocialCard() {
     >
       {/* Decorative vertical line container */}
       <div className="border-l border-accent/20 pl-6 md:pl-7 flex flex-col gap-9 py-1">
-        
+
         {/* CONNECT Section */}
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-1 items-start">
@@ -45,26 +45,34 @@ export default function SocialCard() {
               </svg>
             </a>
 
-            {/* Email Button */}
+            {/* LeetCode Button */}
             <a
-              href="https://mail.google.com/mail/?view=cm&to=saurabhchauhan1785@gmail.com"
+              href="https://leetcode.com/Saurabh_chauhan786/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Email"
+              aria-label="LeetCode"
               className="w-11 h-11 rounded-lg border border-accent/20 bg-white dark:bg-zinc-950 flex items-center justify-center text-foreground hover:text-accent hover:border-accent hover:bg-accent/5 hover:scale-105 transition-all duration-300 shadow-sm"
             >
               <svg
                 width="20"
                 height="20"
-                viewBox="0 0 24 24"
+                viewBox="0 0 100 100"
                 fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
               >
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                <path
+                  d="M57.7125 12.5L19.2917 50C18.4619 50.8006 17.8019 51.7602 17.3511 52.8215C16.9003 53.8828 16.668 55.024 16.668 56.1771C16.668 57.3301 16.9003 58.4714 17.3511 59.5327C17.8019 60.594 18.4619 61.5536 19.2917 62.3542L42.4375 84.9417C45.9375 88.3542 51.6042 88.3542 55.0958 84.9417L66.6667 73.65"
+                  stroke="currentColor"
+                  strokeWidth="6.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M26.3833 43.075L42.4333 27.4084C44.1316 25.7673 46.4009 24.8501 48.7625 24.8501C51.1241 24.8501 53.3933 25.7673 55.0916 27.4084L66.6625 38.7042M45.8333 54.1667H83.3333"
+                  stroke="currentColor"
+                  strokeWidth="6.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </a>
 

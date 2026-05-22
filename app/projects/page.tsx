@@ -15,7 +15,8 @@ Automatically transforms raw customer feedback into structured product requireme
     tech: ["AI Automation", "REACT"],
     status: "In Progress" as const,
     links: [
-      {label: "View Code", href: "https://github.com/Saurabh-1785/apeai.git"},
+      { label: "Live Demo", href: "https://apeai-nine.vercel.app/" },
+      { label: "View Code", href: "https://github.com/Saurabh-1785/apeai.git" },
     ],
   },
   {
@@ -78,7 +79,7 @@ Identifying bugs and code issues in JavaScript often relies on executing the cod
 
 Solution:
 VeriJS provides a lightweight static analysis tool that detects issues without running the code by parsing code into an Abstract Syntax Tree (AST).`,
-    tech: ["BABEL","MONACO EDITOR","JAVASCRIPT"],
+    tech: ["BABEL", "MONACO EDITOR", "JAVASCRIPT"],
     status: "Completed" as const,
     links: [
       { label: "Live Demo", href: "https://veri-js-lake.vercel.app/" },
@@ -107,7 +108,7 @@ Finding nearby resources like hospitals or restaurants in real-time can be ineff
 
 Solution:
 GeoFinder addresses this by offering a WebGIS-based platform that integrates geolocation, geocoding, and real-time spatial queries.`,
-    tech: ["LEAFLET","AXIOS","OPENSTREET MAP API"],
+    tech: ["LEAFLET", "AXIOS", "OPENSTREET MAP API"],
     status: "Completed" as const,
     links: [
       { label: "Live Demo", href: "https://geofinder-5j69.onrender.com/" },
@@ -202,7 +203,7 @@ export default function ProjectsPage() {
 
           return (
             <ScrollStackItem key={project.title}>
-              <div 
+              <div
                 className="group bg-card border-[1.5px] border-edge rounded-[24px] transition-all duration-300 hover:border-edge-hover overflow-hidden relative flex flex-col md:flex-row shadow-[0_4px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.2)] h-auto md:h-[160px] cursor-pointer"
                 onClick={() => setInfoOpen(project.title)}
               >
@@ -248,10 +249,10 @@ export default function ProjectsPage() {
                     </div>
 
                     {githubLink && (
-                      <a 
-                        href={githubLink} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
+                      <a
+                        href={githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-secondary hover:text-accent transition-all duration-200 z-10 p-1"
                         onClick={(e) => e.stopPropagation()}
                       >
@@ -262,10 +263,10 @@ export default function ProjectsPage() {
                     )}
 
                     {demoLink && (
-                      <a 
-                        href={demoLink} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
+                      <a
+                        href={demoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-secondary hover:text-accent transition-all duration-200 z-10 p-1"
                         onClick={(e) => e.stopPropagation()}
                       >

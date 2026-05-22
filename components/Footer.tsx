@@ -14,26 +14,30 @@ const Footer = () => {
   };
 
   return (
-    <footer className="footer-bg pt-16 pb-8 border-t-[1.5px] border-edge mt-20 container-full relative transition-all duration-300">
+    <footer className="w-full relative transition-all duration-300 border-t border-edge/15 mt-16 bg-page overflow-hidden">
+      {/* Background Subtle Gradient */}
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-accent/[0.03] blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1280px] mx-auto px-6 flex flex-col md:flex-row md:justify-between items-center md:items-start gap-12 md:gap-4 relative">
+      {/* Main Container - Empty space on left and right up to 1280px */}
+      <div className="max-w-[1280px] mx-auto px-6 md:px-8 pt-12 pb-8 flex flex-col md:flex-row justify-between items-start gap-12 md:gap-8 relative z-10">
 
-        <div className="flex flex-col items-center md:items-start gap-6 w-full md:w-[320px] shrink-0">
-          <div className="flex flex-col items-center md:items-start gap-4">
-            <h2 className="text-2xl font-black tracking-tighter text-foreground group cursor-default text-center md:text-left">
+        {/* Left Column: Info & Socials & Map */}
+        <div className="flex flex-col items-start gap-5 w-full md:w-[340px] shrink-0">
+          <div className="flex flex-col items-start gap-2">
+            <h2 className="text-2xl font-black tracking-tighter text-foreground group cursor-default text-left">
               <span className="text-accent group-hover:text-foreground transition-colors duration-300">
                 SAURABH CHAUHAN
               </span>
             </h2>
-            <div className="flex items-center justify-center md:justify-start gap-2 text-muted text-xs font-semibold tracking-wider uppercase">
+            <div className="flex items-center justify-start gap-1.5 text-secondary/60 text-xs font-semibold tracking-wider uppercase">
               <svg
-                width="16"
-                height="16"
+                width="14"
+                height="14"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 className="text-accent"
@@ -45,47 +49,86 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="relative w-full h-32 rounded-xl overflow-hidden border border-edge/20 group cursor-pointer">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#f8fafc] to-[#f1f5f9] dark:from-[#0d0d0e] dark:to-[#161618] transition-colors duration-500">
-              
-              {/* Ultra-Smooth Topographic Lines */}
-              <svg className="absolute inset-0 w-full h-full opacity-[0.15] dark:opacity-[0.25]" viewBox="0 0 400 200" preserveAspectRatio="none">
-                <g fill="none" stroke="currentColor" className="text-accent">
-                  <path d="M-50,150 Q100,50 250,150 T550,150" strokeWidth="1.5">
-                    <animate attributeName="d" values="M-50,150 Q100,50 250,150 T550,150; M-50,130 Q120,70 270,130 T550,130; M-50,150 Q100,50 250,150 T550,150" dur="10s" repeatCount="indefinite" />
-                  </path>
-                  <path d="M-50,100 Q150,0 300,100 T650,100" strokeWidth="1" opacity="0.6">
-                    <animate attributeName="d" values="M-50,100 Q150,0 300,100 T650,100; M-50,120 Q130,20 280,120 T650,120; M-50,100 Q150,0 300,100 T650,100" dur="12s" repeatCount="indefinite" />
-                  </path>
-                  <path d="M-50,180 Q80,100 220,180 T520,180" strokeWidth="0.8" opacity="0.4">
-                    <animate attributeName="d" values="M-50,180 Q80,100 220,180 T520,180; M-50,160 Q90,110 230,160 T520,160; M-50,180 Q80,100 220,180 T520,180" dur="8s" repeatCount="indefinite" />
-                  </path>
-                </g>
+          {/* Realistic High-Fidelity GIS Vector Map */}
+          <div className="relative w-full h-[100px] rounded-xl overflow-hidden border border-edge/30 group cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.15)] bg-[#050505]">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#101010] to-[#050505] transition-colors duration-500">
+
+              <svg className="absolute inset-0 w-full h-full opacity-70" viewBox="0 0 400 120" preserveAspectRatio="none">
+                {/* Topographic Contours */}
+                <path d="M-50,20 Q100,-10 250,30 T450,10" fill="none" stroke="currentColor" className="text-accent/10" strokeWidth="0.5" />
+                <path d="M-50,40 Q120,0 260,50 T450,30" fill="none" stroke="currentColor" className="text-accent/10" strokeWidth="0.5" />
+                <path d="M-50,60 Q140,10 270,70 T450,50" fill="none" stroke="currentColor" className="text-accent/10" strokeWidth="0.5" />
+                <path d="M-50,80 Q160,20 280,90 T450,70" fill="none" stroke="currentColor" className="text-accent/10" strokeWidth="0.5" />
+                <path d="M-50,100 Q180,30 290,110 T450,90" fill="none" stroke="currentColor" className="text-accent/10" strokeWidth="0.5" />
+
+                {/* River Path (Beas River) */}
+                <path d="M-20,130 C40,110 120,60 200,80 C280,100 340,40 420,20" fill="none" stroke="url(#riverGradient)" strokeWidth="12" strokeLinecap="round" />
+                <path d="M-20,130 C40,110 120,60 200,80 C280,100 340,40 420,20" fill="none" stroke="url(#riverHighlight)" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
+
+                <defs>
+                  <linearGradient id="riverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#0d9488" stopOpacity="0.3" />
+                    <stop offset="50%" stopColor="#14b8a6" stopOpacity="0.4" />
+                    <stop offset="100%" stopColor="#0d9488" stopOpacity="0.3" />
+                  </linearGradient>
+                  <linearGradient id="riverHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#ffffff" stopOpacity="0.4" />
+                    <stop offset="100%" stopColor="#14b8a6" stopOpacity="0" />
+                  </linearGradient>
+                </defs>
+
+                {/* Main Highway NH-70 */}
+                <path d="M50,-10 C90,40 180,50 250,120" fill="none" stroke="currentColor" className="text-accent/30" strokeWidth="2.5" />
+                <path d="M50,-10 C90,40 180,50 250,120" fill="none" stroke="#14b8a6" strokeWidth="1" strokeDasharray="4 4" opacity="0.6" />
+
+                {/* Secondary Roads */}
+                <path d="M0,50 Q100,50 140,80 T250,120" fill="none" stroke="currentColor" className="text-edge/60" strokeWidth="1.2" />
+                <path d="M140,80 Q200,20 300,30" fill="none" stroke="currentColor" className="text-edge/60" strokeWidth="1.2" />
+                <path d="M300,30 Q350,80 420,90" fill="none" stroke="currentColor" className="text-edge/60" strokeWidth="1.2" />
+
+                {/* Local Streets Network */}
+                <path d="M80,30 L110,40 L120,20 M100,50 L90,70 L120,80 M180,50 L200,30 L220,40 L210,60 M220,40 L250,30 L280,40" fill="none" stroke="currentColor" className="text-secondary/20" strokeWidth="0.8" />
+                <path d="M250,70 L280,60 L290,80 L260,90 Z M300,30 L320,10 L350,20 M330,50 L350,40 L380,60" fill="none" stroke="currentColor" className="text-secondary/20" strokeWidth="0.8" />
+
+                {/* Map Grids / Coordinates lines */}
+                <line x1="80" y1="0" x2="80" y2="120" stroke="currentColor" className="text-secondary/10" strokeWidth="0.5" strokeDasharray="2 2" />
+                <line x1="280" y1="0" x2="280" y2="120" stroke="currentColor" className="text-secondary/10" strokeWidth="0.5" strokeDasharray="2 2" />
+                <line x1="0" y1="40" x2="400" y2="40" stroke="currentColor" className="text-secondary/10" strokeWidth="0.5" strokeDasharray="2 2" />
+
+                {/* Landmarks / Scatter Points */}
+                <circle cx="110" cy="40" r="1.5" fill="currentColor" className="text-accent/60" />
+                <circle cx="200" cy="30" r="1.5" fill="currentColor" className="text-accent/60" />
+                <circle cx="320" cy="10" r="1.5" fill="currentColor" className="text-accent/60" />
+                <circle cx="280" cy="60" r="1.5" fill="currentColor" className="text-accent/60" />
+
+                <text x="330" y="65" fill="currentColor" className="text-secondary/40 font-mono text-[6px] italic">BEAS RIVER</text>
+                <text x="210" y="25" fill="currentColor" className="text-secondary/50 font-mono text-[5px] tracking-widest">TOWN CENTER</text>
+
+                <text x="83" y="110" fill="currentColor" className="text-accent/40 font-mono text-[5px]">76.5218° E</text>
+                <text x="283" y="110" fill="currentColor" className="text-accent/40 font-mono text-[5px]">31.6862° N</text>
+
+                {/* Compass & Scale */}
+                <path d="M375,105 L385,105 M375,103 L375,107 M385,103 L385,107" stroke="currentColor" className="text-secondary/40" strokeWidth="0.5" fill="none" />
+                <text x="375" y="100" fill="currentColor" className="text-secondary/40 font-mono text-[4px]">500m</text>
+
+                <polygon points="380,10 382,20 380,18 378,20" fill="currentColor" className="text-accent/60" />
+                <text x="378.5" y="8" fill="currentColor" className="text-secondary/60 font-mono text-[4px] font-bold">N</text>
               </svg>
 
-              {/* Smooth Grid */}
-              <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.07]" 
-                style={{ backgroundImage: 'linear-gradient(currentColor 0.5px, transparent 0.5px), linear-gradient(90deg, currentColor 0.5px, transparent 0.5px)', backgroundSize: '20px 20px' }} />
-
-              {/* The "AI Glow" Scan Line */}
-              <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute left-0 w-full h-1/2 bg-gradient-to-b from-accent/[0.03] to-transparent -translate-y-full animate-[scanLineSmooth_6s_linear_infinite]" />
-              </div>
-
-              {/* Glowing Location Indicator */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-2">
+              {/* Glowing Location Indicator & Label */}
+              <div className="absolute top-[60%] left-[35%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-1.5">
                 <div className="relative">
-                  <div className="absolute -inset-4 bg-accent/20 rounded-full blur-xl animate-pulse" />
-                  <div className="absolute -inset-2 border border-accent/30 rounded-full animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]" />
-                  <div className="w-2.5 h-2.5 bg-accent rounded-full shadow-[0_0_12px_rgba(var(--accent-rgb,20,184,166),0.6)] relative z-10 border-2 border-white dark:border-[#0d0d0e]" />
+                  <div className="absolute -inset-2.5 bg-accent/30 rounded-full blur-md animate-pulse" />
+                  <div className="absolute -inset-1 border border-accent/30 rounded-full animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]" />
+                  <div className="w-1.5 h-1.5 bg-accent rounded-full shadow-[0_0_8px_rgba(20,184,166,0.9)] relative z-10 border border-white/30" />
                 </div>
-                <span className="text-[9px] font-black text-foreground uppercase tracking-wider bg-white/80 dark:bg-[#111]/80 backdrop-blur-md px-2.5 py-0.5 rounded-full shadow-sm border border-edge/10">
-                  Hamirpur, HP
+                <span className="text-[7px] font-bold text-white uppercase tracking-widest bg-black/80 px-2 py-0.5 rounded shadow-sm select-none border border-edge/20 backdrop-blur-sm">
+                  NIT Hamirpur
                 </span>
               </div>
 
               {/* Subtle Vignette */}
-              <div className="absolute inset-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.02)] dark:shadow-[inset_0_0_40px_rgba(0,0,0,0.2)] pointer-events-none" />
+              <div className="absolute inset-0 shadow-[inset_0_0_30px_rgba(0,0,0,0.4)] pointer-events-none" />
             </div>
 
             <a
@@ -94,117 +137,197 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-accent/5 backdrop-blur-[1px] group/mapbtn"
             >
-              <span className="text-[11px] font-black text-accent uppercase tracking-[0.2em] transition-all duration-300 group-hover/mapbtn:translate-y-[-2px]">
+              <span className="text-[10px] font-black text-accent uppercase tracking-[0.2em] transition-all duration-300 group-hover/mapbtn:translate-y-[-2px]">
                 VIEW MAPS →
               </span>
             </a>
           </div>
 
-          <style jsx global>{`
-            @keyframes scanLineSmooth {
-              0% { transform: translateY(-100%); }
-              100% { transform: translateY(200%); }
-            }
-          `}</style>
+          {/* Description Text */}
+          <p className="text-secondary/70 text-[11px] leading-relaxed font-semibold text-left mt-0.5 w-full">
+            Computer Science student passionate about building impactful solutions and exploring emerging technologies.
+          </p>
+
+          {/* Social Icons */}
+          <div className="flex gap-4 mt-1 items-center justify-start w-full">
+            <a
+              href="https://www.linkedin.com/in/saurabh-chauhan-a96413323/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-secondary/70 hover:text-accent hover:scale-110 transition-all duration-300 transform"
+              aria-label="LinkedIn"
+            >
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
+            </a>
+            <a
+              href="https://github.com/Saurabh-1785"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-secondary/70 hover:text-accent hover:scale-110 transition-all duration-300 transform"
+              aria-label="GitHub"
+            >
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+              </svg>
+            </a>
+            <a
+              href="https://x.com/master_Saurabh_"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-secondary/70 hover:text-accent hover:scale-110 transition-all duration-300 transform"
+              aria-label="Twitter / X"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+          </div>
         </div>
 
-        <div className="flex flex-col items-center flex-1">
-          <ul className="space-y-10">
-            {[
-              { name: "Home", href: "/" },
-              { name: "About Me", href: "/about" },
-              { name: "Projects", href: "/projects" },
-              { name: "Reach Out", href: "/contact" },
-            ].map((link) => (
-              <li key={link.name}>
-                <Link
-                  href={link.href}
-                  className="text-secondary hover:text-accent transition-all duration-200 text-[13px] flex items-center gap-3 group"
-                >
-                  <span className="w-0 group-hover:w-3 h-[1px] bg-accent transition-all duration-300" />
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        {/* Middle Column: Navigation Links */}
+        <div className="flex flex-col items-start flex-1 md:items-center w-full mt-4 md:mt-0">
+          <div className="flex flex-col items-start w-full max-w-[200px]">
+            <div className="flex flex-col gap-1 items-start mb-4">
+              <h3 className="text-xs font-bold text-accent uppercase tracking-widest leading-none">
+                NAVIGATION
+              </h3>
+              <div className="w-7 h-[2px] bg-accent/60 mt-1.5 rounded" />
+            </div>
+
+            <ul className="w-full flex flex-col items-start">
+              {[
+                { name: "Home", href: "/" },
+                { name: "Work", href: "/work" },
+                { name: "Projects", href: "/projects" },
+              ].map((link, idx) => (
+                <li key={link.name} className={`w-full border-t border-edge/10 py-2 ${idx === 3 ? "border-b" : ""}`}>
+                  <Link
+                    href={link.href}
+                    className="text-secondary/70 hover:text-accent transition-all duration-250 text-[11px] font-bold flex items-center justify-between group px-1"
+                  >
+                    <span>{link.name}</span>
+                    <svg
+                      width="9"
+                      height="9"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-secondary/30 group-hover:text-accent group-hover:translate-x-1 transition-all duration-200"
+                    >
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        <div className="flex flex-col items-center md:items-start md:w-[240px] shrink-0">
-          <div className="flex gap-6 items-center mb-10">
-            {[
-              {
-                name: "LinkedIn",
-                href: "https://www.linkedin.com/in/saurabh-chauhan-a96413323/",
-                icon: (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                  </svg>
-                ),
-              },
-              {
-                name: "GitHub",
-                href: "https://github.com/Saurabh-1785",
-                icon: (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-                  </svg>
-                ),
-              },
-              {
-                name: "Twitter",
-                href: "https://x.com/master_Saurabh_",
-                icon: (
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                  </svg>
-                ),
-              },
-            ].map((social) => (
-              <a
-                key={social.name}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-secondary hover:text-accent hover:scale-125 transition-all duration-300 transform"
-                aria-label={social.name}
-              >
-                {social.icon}
-              </a>
-            ))}
+        {/* Right Column: Contact Form */}
+        <div className="flex flex-col items-start w-full md:w-[280px] shrink-0 gap-4 mt-4 md:mt-0">
+          <div className="flex flex-col gap-1 items-start">
+            <h3 className="text-xs font-bold text-accent uppercase tracking-widest leading-none">
+              GET IN TOUCH
+            </h3>
+            <div className="w-7 h-[2px] bg-accent/60 mt-1.5 rounded" />
           </div>
 
-          <div className="pt-2 w-full flex flex-col items-center md:items-start">
-            <h4 className="text-foreground font-extrabold text-[12px] uppercase tracking-wider mb-5 text-center md:text-left w-full">Get In Touch</h4>
-            <form onSubmit={handleSubscribe} className="relative group w-full flex flex-col items-center md:items-start">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email Address"
-                required
-                className="w-full bg-transparent border-b border-edge/40 py-2.5 text-[13px] focus:border-accent outline-none transition-all duration-300 placeholder:text-muted/50"
-              />
-              <div className="flex justify-center md:justify-start w-full">
-                <button
-                  type="submit"
-                  className="mt-5 text-accent hover:text-foreground text-[11px] font-black uppercase tracking-widest transition-all duration-300 hover:translate-x-1.5"
-                >
-                  SEND
-                </button>
+          <div className="w-full flex flex-col items-start">
+            <form onSubmit={handleSubscribe} className="relative group w-full flex flex-col gap-2.5">
+              <div className="relative w-full">
+                <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-secondary/40">
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                  </svg>
+                </span>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email Address"
+                  required
+                  className="w-full bg-[#08080a]/60 border border-edge/20 rounded-lg pl-9 pr-4 py-2 text-xs focus:border-accent/40 focus:ring-1 focus:ring-accent/25 outline-none transition-all duration-300 placeholder:text-muted/40 font-bold text-foreground"
+                />
               </div>
+
+              <button
+                type="submit"
+                className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-lg border border-accent/20 hover:border-accent bg-accent/[0.02] hover:bg-accent/5 text-accent hover:text-accent/90 text-xs font-black uppercase tracking-widest transition-all duration-300 cursor-pointer shadow-sm"
+              >
+                <span>SEND MESSAGE</span>
+                <svg
+                  width="11"
+                  height="11"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+              </button>
             </form>
+            <p className="text-[10px] font-medium text-secondary/40 mt-2 text-left select-none">
+              I'll get back to you as soon as possible!
+            </p>
           </div>
         </div>
       </div>
 
-      <div className="max-w-[1280px] mx-auto px-6 mt-16 border-t border-edge/10">
-        <div className="flex items-center justify-between gap-8 py-8">
-          <p className="text-muted text-[10px] font-bold tracking-[0.1em] uppercase">
-            © 2026 SAURABH CHAUHAN
-          </p>
-          <p className="text-muted text-[10px] font-bold tracking-[0.1em] uppercase">
-            LAST UPDATED: 2026-05-11
-          </p>
+      {/* Copyright Bar */}
+      <div className="max-w-[1280px] mx-auto px-6 md:px-8 border-t border-edge/10">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 py-5">
+          <div className="flex flex-col gap-0.5 items-start select-none">
+            <p className="text-muted text-[10px] font-bold tracking-[0.1em] uppercase">
+              © 2026 SAURABH CHAUHAN
+            </p>
+            <p className="text-muted/40 text-[9px] font-bold tracking-[0.05em] uppercase">
+              All rights reserved.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <p className="text-muted text-[10px] font-bold tracking-[0.1em] uppercase select-none">
+              LAST UPDATED: 2026-05-22
+            </p>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="w-7 h-7 rounded-lg border border-edge/20 hover:border-accent/40 bg-accent/5 hover:bg-accent/10 flex items-center justify-center text-accent hover:scale-[1.05] transition-all duration-300 cursor-pointer shadow-sm"
+              aria-label="Scroll to top"
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="12" y1="19" x2="12" y2="5" />
+                <polyline points="5 12 12 5 19 12" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </footer>

@@ -32,27 +32,35 @@ const skills = [
 const workHistory = [
   {
     title: "Google Developers Groups Ludhiana - NITH Chapter",
-    duration: "2024 - Present",
+    role: "Community Member",
+    duration: "2024 - PRESENT",
+    icon: "code",
   },
   {
     title: "TEDxNIT Hamirpur",
-    duration: "2024 - Present",
+    role: "Core Team Member",
+    duration: "2024 - PRESENT",
+    icon: "people",
   },
 ];
 
 const projects = [
   {
     title: "APE AI",
+    shortDescription: "AI-powered platform that helps users generate, refine and optimize content using advanced language models.",
     description:
       `Problem: 
     Companies receive large volumes of customer feedback from multiple sources, but this data is unstructured and difficult to analyze. Product teams must manually review, categorize, and convert feedback into requirements, which is time-consuming, error-prone, and often leads to missed insights and delayed product improvements.
 
     Solution: 
     Automatically transforms raw customer feedback into structured product requirements. It analyzes feedback, identifies key issues, generates validated requirements, and converts them into engineering-ready tasks, enabling faster and more data-driven product decision-making.`,
+    github: "https://github.com/Saurabh-1785/apeai.git",
+    demo: "https://apeai-nine.vercel.app/",
     status: "In Progress" as const,
   },
   {
     title: "PathBound",
+    shortDescription: "A travel companion that helps users discover personalized routes, nearby places and plan memorable journeys.",
     description: `
     Problem:
     Traditional currency exchange and remittance systems expose users to unpredictable exchange rates and hidden fees. In volatile markets, users often receive significantly less than expected, with little transparency or control over the conversion rate. Additionally, there is no mechanism to set conditions like minimum acceptable rates or timing, leaving users dependent on centralized intermediaries.
@@ -65,6 +73,7 @@ const projects = [
   },
   {
     title: "ResumeFlow",
+    shortDescription: "Resume screening and shortlisting tool that helps recruiters save time and hire smarter using automated parsing.",
     description: `
     An AI-powered CV generator that converts user input into a polished, ATS-optimized resume with professional formatting. It leverages real-time LaTeX compilation to provide instant preview and high-quality PDF output, ensuring accuracy, customization, and a seamless resume-building experience across devices.`,
     github: "https://github.com/Saurabh-1785/ResumeFlow.git",
@@ -73,6 +82,7 @@ const projects = [
   },
   {
     title: "CodeSync",
+    shortDescription: "A real-time collaborative coding environment with live cursors, user presence, and conflict-free editing using CRDTs.",
     description: `
     Problem:
     Traditional code collaboration relies on version control systems that are not truly real-time, leading to delays, merge conflicts, and inefficient teamwork. Developers often struggle with tracking changes, coordinating edits, and maintaining consistency when multiple people work on the same file simultaneously.
@@ -98,8 +108,11 @@ export default function HomePage() {
           <SocialCard />
           <ExpertiseCard skills={skills} />
           <ProjectGrid projects={projects} workHistory={workHistory} onOpenInfo={setInfoOpen} />
-          <StatsBar />
-          <GitHubContributionCard />
+          {/* Right side: GitHub chart on top, StatsBar on bottom */}
+          <div className="col-span-1 md:col-span-3 lg:col-span-2 flex flex-col w-full h-full">
+            <GitHubContributionCard />
+            <StatsBar />
+          </div>
         </SpotlightGrid>
       </div>
 

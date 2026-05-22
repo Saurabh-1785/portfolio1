@@ -5,7 +5,7 @@ import React from "react";
 export default function StatsBar() {
   return (
     <div
-      className="group col-span-1 md:col-span-3 lg:col-span-2 bg-[#048379] overflow-hidden transition-colors duration-200 delay-75 h-full relative w-full flex items-center justify-center min-h-[320px] md:min-h-[340px] lg:min-h-[380px]"
+      className="group bg-[#048379] overflow-hidden transition-colors duration-200 delay-75 h-full relative w-full flex items-center justify-center"
       data-spotlight-card
     >
       {/* Subtle HUD Grid Crosshairs (Dividing Lines) */}
@@ -74,19 +74,19 @@ export default function StatsBar() {
 
       <div className="grid grid-cols-2 grid-rows-2 h-full w-full relative z-10 p-6 md:p-8">
         <div className="flex flex-col items-center justify-center text-center p-2">
-          <p className="text-3xl md:text-4xl lg:text-[44px] font-extrabold text-white leading-none tracking-tight">15+</p>
+          <p className="text-3xl md:text-4xl lg:text-[44px] font-extrabold text-white leading-none tracking-tight">40+</p>
           <p className="text-white/80 text-xs md:text-sm lg:text-base font-semibold mt-2 md:mt-3">Projects</p>
         </div>
         <div className="flex flex-col items-center justify-center text-center p-2">
-          <p className="text-3xl md:text-4xl lg:text-[44px] font-extrabold text-white leading-none tracking-tight">240+</p>
+          <p className="text-3xl md:text-4xl lg:text-[44px] font-extrabold text-white leading-none tracking-tight">400+</p>
           <p className="text-white/80 text-xs md:text-sm lg:text-base font-semibold mt-2 md:mt-3">GitHub Commits</p>
         </div>
         <div className="flex flex-col items-center justify-center text-center p-2">
-          <p className="text-3xl md:text-4xl lg:text-[44px] font-extrabold text-white leading-none tracking-tight">300+</p>
+          <p className="text-3xl md:text-4xl lg:text-[44px] font-extrabold text-white leading-none tracking-tight">450+</p>
           <p className="text-white/80 text-xs md:text-sm lg:text-base font-semibold mt-2 md:mt-3">Contributions Made</p>
         </div>
         <div className="flex flex-col items-center justify-center text-center p-2">
-          <p className="text-3xl md:text-4xl lg:text-[44px] font-extrabold text-white leading-none tracking-tight">3</p>
+          <p className="text-3xl md:text-4xl lg:text-[44px] font-extrabold text-white leading-none tracking-tight">5</p>
           <p className="text-white/80 text-xs md:text-sm lg:text-base font-semibold mt-2 md:mt-3">Events Organized</p>
         </div>
       </div>
