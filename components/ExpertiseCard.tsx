@@ -77,9 +77,10 @@ export default function ExpertiseCard({ skills }: ExpertiseCardProps) {
       data-spotlight-card
       className="bg-card p-7 transition-colors duration-200 delay-75 overflow-hidden md:col-span-3 lg:col-span-3 flex flex-col gap-4 w-full h-full"
     >
-      <h3 className="text-sm font-semibold text-label uppercase tracking-wide">
-        Expertise
+      <h3 className="text-xs font-bold text-accent uppercase tracking-widest leading-none">
+        EXPERTISE
       </h3>
+      <div className="w-7 h-[2px] bg-accent/60 mt-1.5 rounded" />
       <div className="marquee-container my-auto">
         <div className="marquee-content">
           {/* First set of skills for seamless infinite looping */}
@@ -96,9 +97,8 @@ export default function ExpertiseCard({ skills }: ExpertiseCardProps) {
                   <img
                     src={info.iconUrl}
                     alt={skill}
-                    className={`w-9 h-9 transition-all duration-300 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100${
-                      info.darkInvert ? " dark:invert" : ""
-                    }`}
+                    className={`w-9 h-9 transition-all duration-300 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100${info.darkInvert ? " dark:invert" : ""
+                      }`}
                   />
                   <span className="text-[10px] font-semibold text-muted transition-colors duration-300 group-hover:text-foreground whitespace-nowrap">
                     {skill}
@@ -121,9 +121,8 @@ export default function ExpertiseCard({ skills }: ExpertiseCardProps) {
                   <img
                     src={info.iconUrl}
                     alt={skill}
-                    className={`w-9 h-9 transition-all duration-300 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100${
-                      info.darkInvert ? " dark:invert" : ""
-                    }`}
+                    className={`w-9 h-9 transition-all duration-300 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100${info.darkInvert ? " dark:invert" : ""
+                      }`}
                   />
                   <span className="text-[10px] font-semibold text-muted transition-colors duration-300 group-hover:text-foreground whitespace-nowrap">
                     {skill}

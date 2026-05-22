@@ -11,7 +11,7 @@ export default function HeroCard() {
             <img
               src="/Saurabh.webp"
               alt="Saurabh Chauhan"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain object-bottom"
               loading="eager"
               fetchPriority="high"
             />
@@ -20,7 +20,7 @@ export default function HeroCard() {
             <img
               src="/Saurabh.webp"
               alt="Saurabh Chauhan Active"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain object-bottom"
               loading="eager"
               fetchPriority="high"
             />

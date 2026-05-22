@@ -33,16 +33,40 @@ export default function ProjectGrid({
         className="bg-card transition-colors duration-200 delay-75 overflow-hidden"
       >
         <div className="px-5 md:px-6 pt-5 pb-2">
-          <h3 className="text-sm font-semibold text-label uppercase tracking-wide mb-4">
-            Work
-          </h3>
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex flex-col gap-1 items-start">
+              <h3 className="text-xs font-bold text-accent uppercase tracking-widest leading-none">
+                WORK
+              </h3>
+              <div className="w-7 h-[2px] bg-accent/60 mt-1.5 rounded" />
+            </div>
+            <Link
+              href="/projects"
+              className="text-accent hover:text-accent/80 transition-colors duration-200"
+              aria-label="View all projects"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </Link>
+          </div>
           <div className="flex flex-col gap-0">
             {workHistory.map((work, i) => (
               <div
                 key={work.title}
                 className={`flex items-center justify-between py-3.5 ${i < workHistory.length - 1
-                    ? "border-b border-edge/30"
-                    : ""
+                  ? "border-b border-edge/30"
+                  : ""
                   }`}
               >
                 <div className="flex items-center gap-3 min-w-0">
@@ -60,17 +84,51 @@ export default function ProjectGrid({
         </div>
       </div>
 
-      {/* Row 2: Project Cards*/}
-      <div className="grid grid-cols-1 min-[425px]:grid-cols-2 lg:grid-cols-3 gap-0 bg-transparent">
+      {/* Row 2: Projects Header */}
+      <div
+        data-spotlight-card
+        className="bg-card transition-colors duration-200 delay-75 overflow-hidden border-t border-edge/30"
+      >
+        <div className="px-5 md:px-6 pt-5 pb-4 flex items-center justify-between">
+          <div className="flex flex-col gap-1 items-start">
+            <h3 className="text-xs font-bold text-accent uppercase tracking-widest leading-none">
+              PROJECTS
+            </h3>
+            <div className="w-7 h-[2px] bg-accent/60 mt-1.5 rounded" />
+          </div>
+          <Link
+            href="/projects"
+            className="text-accent hover:text-accent/80 transition-colors duration-200"
+            aria-label="View all projects"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg>
+          </Link>
+        </div>
+      </div>
+
+      {/* Row 3: Project Cards Grid */}
+      <div className="flex-1 grid grid-cols-1 min-[425px]:grid-cols-2 lg:grid-cols-3 gap-0 bg-transparent">
         {projects.map((project) => (
           <div
             key={project.title}
             data-spotlight-card
-            className={`bg-card transition-colors duration-200 delay-75 overflow-hidden relative${project.mobileOnly ? " lg:hidden" : ""
+            className={`bg-card transition-colors duration-200 delay-75 overflow-hidden relative flex flex-col h-full ${project.mobileOnly ? " lg:hidden" : ""
               }`}
           >
-            <div className="h-[100px] min-[425px]:h-[90px] lg:h-[80px] bg-white dark:bg-black" />
-            <div className="px-4 lg:px-4 pt-3 lg:pt-3 pb-4 lg:pb-4 bg-edge/10 dark:bg-edge/20 relative">
+            <div className="flex-1 min-h-[70px] bg-white dark:bg-black" />
+            <div className="px-4 lg:px-4 pt-3 lg:pt-3 pb-4 lg:pb-4 bg-edge/10 dark:bg-edge/20 relative mt-auto">
               <h4 className="text-sm lg:text-[13px] font-bold mb-2">
                 {project.title}
               </h4>
@@ -147,8 +205,8 @@ export default function ProjectGrid({
               >
                 <div
                   className={`w-2.5 h-2.5 rounded-full ${project.status === "Completed"
-                      ? "bg-accent"
-                      : "bg-white"
+                    ? "bg-accent"
+                    : "bg-white"
                     }`}
                 />
               </div>
@@ -157,14 +215,6 @@ export default function ProjectGrid({
         ))}
       </div>
 
-      {/* Row 3: View All Projects */}
-      <Link
-        href="/projects"
-        className="flex items-center justify-between py-4 px-6 bg-btn text-btn-text no-underline text-sm font-semibold transition-colors duration-200 delay-75 hover:bg-btn-hover hover:text-foreground focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
-      >
-        View All Projects
-        <span className="text-lg">↗</span>
-      </Link>
     </div>
   );
 }
