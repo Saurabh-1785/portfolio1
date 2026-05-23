@@ -294,7 +294,8 @@ export default function ProjectGrid({
             <div
               key={project.title}
               data-spotlight-card
-              className={`bg-card border border-edge/10 rounded-[20px] p-4 md:p-5 flex flex-col h-full relative overflow-hidden transition-all duration-300 hover:translate-y-[-2px] group ${project.mobileOnly ? " lg:hidden" : ""
+              onClick={() => onOpenInfo(project.title)}
+              className={`bg-card border border-edge/10 rounded-[20px] p-4 md:p-5 flex flex-col h-full relative overflow-hidden transition-all duration-300 hover:translate-y-[-2px] group cursor-pointer ${project.mobileOnly ? " lg:hidden" : ""
                 }`}
             >
               {/* Card Visual Header with Dot Grid Background */}
@@ -312,7 +313,6 @@ export default function ProjectGrid({
                   {project.title === "APE AI" && <BrainIcon />}
                   {project.title === "PathBound" && <MapRouteIcon />}
                   {project.title === "ResumeFlow" && <ResumeIcon />}
-                  {project.title === "CodeSync" && <CodeSyncIcon />}
                 </div>
 
                 {/* Status Dot in top right */}
@@ -338,7 +338,10 @@ export default function ProjectGrid({
                 <div className="flex items-center gap-1.5">
                   {/* Info Icon Button */}
                   <button
-                    onClick={() => onOpenInfo(project.title)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onOpenInfo(project.title);
+                    }}
                     className="w-7 h-7 rounded-full border border-edge/15 flex items-center justify-center text-secondary/70 hover:text-accent hover:border-accent/40 bg-accent/5 hover:scale-105 transition-all duration-200 cursor-pointer"
                     aria-label={`Info about ${project.title}`}
                   >
@@ -364,6 +367,7 @@ export default function ProjectGrid({
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       className="w-7 h-7 rounded-full border border-edge/15 flex items-center justify-center text-secondary/70 hover:text-accent hover:border-accent/40 bg-accent/5 hover:scale-105 transition-all duration-200"
                       aria-label={`${project.title} GitHub`}
                     >
@@ -379,6 +383,7 @@ export default function ProjectGrid({
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       className="w-7 h-7 rounded-full border border-edge/15 flex items-center justify-center text-secondary/70 hover:text-accent hover:border-accent/40 bg-accent/5 hover:scale-105 transition-all duration-200"
                       aria-label={`${project.title} Demo`}
                     >
@@ -405,6 +410,7 @@ export default function ProjectGrid({
                   href={project.demo || project.github || "#"}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
                   className="text-[10px] font-bold text-accent hover:text-white border border-accent/20 hover:border-accent hover:bg-accent px-3 py-1.5 rounded-lg transition-all duration-250 flex items-center gap-1 cursor-pointer"
                 >
                   <span>View Project</span>

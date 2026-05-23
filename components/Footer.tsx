@@ -19,18 +19,18 @@ const Footer = () => {
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-accent/[0.03] blur-3xl pointer-events-none" />
 
-      {/* Main Container - Empty space on left and right up to 1280px */}
-      <div className="max-w-[1280px] mx-auto px-6 md:px-8 pt-12 pb-8 flex flex-col md:flex-row justify-between items-start gap-12 md:gap-8 relative z-10">
+      {/* Main Container - full width, columns spread edge-to-edge */}
+      <div className="max-w-[1280px] mx-auto w-full px-12 pt-9 pb-6 flex flex-col md:flex-row justify-between items-start gap-12 md:gap-8 relative z-10">
 
         {/* Left Column: Info & Socials & Map */}
-        <div className="flex flex-col items-start gap-5 w-full md:w-[340px] shrink-0">
-          <div className="flex flex-col items-start gap-2">
-            <h2 className="text-2xl font-black tracking-tighter text-foreground group cursor-default text-left">
+        <div className="flex flex-col items-center gap-4 w-full md:w-[320px] shrink-0">
+          <div className="flex flex-col items-center gap-2">
+            <h2 className="text-2xl font-black tracking-tighter text-foreground group cursor-default text-center">
               <span className="text-accent group-hover:text-foreground transition-colors duration-300">
                 SAURABH CHAUHAN
               </span>
             </h2>
-            <div className="flex items-center justify-start gap-1.5 text-secondary/60 text-xs font-semibold tracking-wider uppercase">
+            <div className="flex items-center justify-center gap-1.5 text-secondary/60 text-xs font-semibold tracking-wider uppercase whitespace-nowrap">
               <svg
                 width="14"
                 height="14"
@@ -142,58 +142,16 @@ const Footer = () => {
               </span>
             </a>
           </div>
-
-          {/* Description Text */}
-          <p className="text-secondary/70 text-[11px] leading-relaxed font-semibold text-left mt-0.5 w-full">
-            Computer Science student passionate about building impactful solutions and exploring emerging technologies.
-          </p>
-
-          {/* Social Icons */}
-          <div className="flex gap-4 mt-1 items-center justify-start w-full">
-            <a
-              href="https://www.linkedin.com/in/saurabh-chauhan-a96413323/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-secondary/70 hover:text-accent hover:scale-110 transition-all duration-300 transform"
-              aria-label="LinkedIn"
-            >
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-              </svg>
-            </a>
-            <a
-              href="https://github.com/Saurabh-1785"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-secondary/70 hover:text-accent hover:scale-110 transition-all duration-300 transform"
-              aria-label="GitHub"
-            >
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-              </svg>
-            </a>
-            <a
-              href="https://x.com/master_Saurabh_"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-secondary/70 hover:text-accent hover:scale-110 transition-all duration-300 transform"
-              aria-label="Twitter / X"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-              </svg>
-            </a>
-          </div>
         </div>
 
         {/* Middle Column: Navigation Links */}
-        <div className="flex flex-col items-start flex-1 md:items-center w-full mt-4 md:mt-0">
-          <div className="flex flex-col items-start w-full max-w-[200px]">
-            <div className="flex flex-col gap-1 items-start mb-4">
-              <h3 className="text-xs font-bold text-accent uppercase tracking-widest leading-none">
+        <div className="flex flex-col items-center flex-1 w-full mt-4 md:mt-0">
+          <div className="flex flex-col items-start w-full max-w-[180px]">
+            <div className="flex flex-col gap-1 items-start mb-3">
+              <h3 className="text-sm font-bold text-accent uppercase tracking-widest leading-none">
                 NAVIGATION
               </h3>
-              <div className="w-7 h-[2px] bg-accent/60 mt-1.5 rounded" />
+              <div className="w-8 h-[2px] bg-accent/60 mt-1.5 rounded" />
             </div>
 
             <ul className="w-full flex flex-col items-start">
@@ -202,10 +160,10 @@ const Footer = () => {
                 { name: "Work", href: "/work" },
                 { name: "Projects", href: "/projects" },
               ].map((link, idx) => (
-                <li key={link.name} className={`w-full border-t border-edge/10 py-2 ${idx === 3 ? "border-b" : ""}`}>
+                <li key={link.name} className={`w-full border-t border-edge/10 py-1.5 ${idx === 2 ? "border-b" : ""}`}>
                   <Link
                     href={link.href}
-                    className="text-secondary/70 hover:text-accent transition-all duration-250 text-[11px] font-bold flex items-center justify-between group px-1"
+                    className="text-secondary/70 hover:text-accent transition-all duration-250 text-sm font-bold flex items-center justify-between group px-1"
                   >
                     <span>{link.name}</span>
                     <svg
@@ -225,16 +183,53 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
+
+            {/* Social Icons - Moved from Left Column */}
+            <div className="flex gap-4 mt-4 items-center justify-start w-full px-1">
+              <a
+                href="https://www.linkedin.com/in/saurabh-chauhan-a96413323/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-secondary/70 hover:text-accent hover:scale-110 transition-all duration-300 transform"
+                aria-label="LinkedIn"
+              >
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+              </a>
+              <a
+                href="https://github.com/Saurabh-1785"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-secondary/70 hover:text-accent hover:scale-110 transition-all duration-300 transform"
+                aria-label="GitHub"
+              >
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+              </a>
+              <a
+                href="https://x.com/master_Saurabh_"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-secondary/70 hover:text-accent hover:scale-110 transition-all duration-300 transform"
+                aria-label="Twitter / X"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
 
         {/* Right Column: Contact Form */}
-        <div className="flex flex-col items-start w-full md:w-[280px] shrink-0 gap-4 mt-4 md:mt-0">
+        <div className="flex flex-col items-start w-full md:w-[300px] shrink-0 gap-4 mt-4 md:mt-0">
           <div className="flex flex-col gap-1 items-start">
-            <h3 className="text-xs font-bold text-accent uppercase tracking-widest leading-none">
+            <h3 className="text-sm font-bold text-accent uppercase tracking-widest leading-none">
               GET IN TOUCH
             </h3>
-            <div className="w-7 h-[2px] bg-accent/60 mt-1.5 rounded" />
+            <div className="w-8 h-[2px] bg-accent/60 mt-1.5 rounded" />
           </div>
 
           <div className="w-full flex flex-col items-start">
@@ -285,7 +280,7 @@ const Footer = () => {
                 </svg>
               </button>
             </form>
-            <p className="text-[10px] font-medium text-secondary/40 mt-2 text-left select-none">
+            <p className="text-xs font-medium text-secondary/40 mt-2 text-left select-none whitespace-nowrap">
               I'll get back to you as soon as possible!
             </p>
           </div>
@@ -293,8 +288,8 @@ const Footer = () => {
       </div>
 
       {/* Copyright Bar */}
-      <div className="max-w-[1280px] mx-auto px-6 md:px-8 border-t border-edge/10">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 py-5">
+      <div className="max-w-[1280px] mx-auto w-full px-12 border-t border-edge/10">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 py-3.5">
           <div className="flex flex-col gap-0.5 items-start select-none">
             <p className="text-muted text-[10px] font-bold tracking-[0.1em] uppercase">
               © 2026 SAURABH CHAUHAN
