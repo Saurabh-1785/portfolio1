@@ -60,7 +60,7 @@ export default function GitHubContributionCard() {
         Github Contributions
       </h3>
       <div className="w-7 h-[2px] bg-accent/60 mt-1.5 rounded mb-4" />
-      <div className="flex justify-center overflow-hidden w-full flex-1 items-center">
+      <div className="overflow-x-auto no-scrollbar w-full py-2 flex justify-start min-[480px]:justify-center">
         <GitHubCalendar
           username="Saurabh-1785"
           transformData={selectContributions}

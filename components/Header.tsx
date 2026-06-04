@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef, useCallback } from "react";
+import { StaggeredMenu } from "./StaggeredMenu";
 
 const navLinks = [
   { href: "/projects", label: "PROJECTS" },
@@ -10,17 +11,38 @@ const navLinks = [
   { href: "/other", label: "OTHER" },
 ];
 
+const menuItems = [
+  { label: "Home", ariaLabel: "Go to home page", link: "/" },
+  { label: "Projects", ariaLabel: "View projects", link: "/projects" },
+  { label: "Work", ariaLabel: "View work experience", link: "/work" },
+  { label: "Other", ariaLabel: "View blogs and other info", link: "/other" },
+];
+
+const socialItems = [
+  { label: "LinkedIn", link: "https://www.linkedin.com/in/saurabh-chauhan-a96413323/" },
+  { label: "GitHub", link: "https://github.com/Saurabh-1785" },
+  { label: "Twitter", link: "https://x.com/master_Saurabh_" },
+];
+
 export default function Header() {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [dark, setDark] = useState(true); // Default to dark as per layout
+  const [scrolled, setScrolled] = useState(false);
   const navRef = useRef<HTMLUListElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setMounted(true);
     setDark(document.documentElement.getAttribute("data-theme") === "dark");
+
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleTheme = useCallback(() => {
@@ -53,7 +75,13 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="bg-page/80 backdrop-blur-md py-4 sticky top-0 w-full z-[1000] transition-colors duration-300">
+    <header
+      className={`py-4 sticky top-0 w-full z-[1000] transition-all duration-300 ${
+        scrolled
+          ? "bg-page/85 backdrop-blur-md border-b border-edge/10 shadow-sm"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
       <nav className="max-w-[1280px] mx-auto flex justify-between items-center px-4 md:px-6 gap-2 overflow-hidden">
         <Link
           href="/"
@@ -63,27 +91,17 @@ export default function Header() {
           <span className="md:hidden">SAURABH</span>
         </Link>
         <div className="flex items-center gap-3">
-          <button
-            className="flex md:hidden flex-col gap-[7px] bg-transparent cursor-pointer group"
-            ref={toggleRef}
-            onClick={() => setMenuOpen((prev) => !prev)}
-            aria-label="Toggle navigation menu"
-          >
-            <span className="w-5 h-0.5 bg-foreground rounded-sm transition-all duration-300" />
-            <span className="w-5 h-0.5 bg-foreground rounded-sm transition-all duration-300" />
-            <span className="w-5 h-0.5 bg-foreground rounded-sm transition-all duration-300" />
-          </button>
+          {/* Desktop Navigation Links */}
           <ul
-            className={`flex list-none ${menuOpen ? "left-0" : "-left-full"
-              } fixed top-[70px] w-full h-[calc(100vh-70px)] bg-page flex-col justify-start items-center pt-10 gap-4 transition-[left] duration-300 ease-in-out md:static md:w-auto md:h-auto md:bg-transparent md:pt-0 md:gap-3 md:flex-row`}
+            className="hidden md:flex list-none md:flex-row md:items-center md:gap-3"
             ref={navRef}
             id="navMenu"
           >
             {navLinks.map((link) => (
-              <li key={link.href} className="w-4/5 md:w-auto">
+              <li key={link.href} className="w-auto">
                 <Link
                   href={link.href}
-                  className={`block text-center py-2 text-[11px] md:text-[12px] px-2 cursor-pointer transition-all duration-300 no-underline tracking-[0.2em] font-black uppercase relative group ${
+                  className={`block text-center py-2 text-[12px] px-2 cursor-pointer transition-all duration-300 no-underline tracking-[0.2em] font-black uppercase relative group ${
                     pathname === link.href ? "text-accent" : "text-foreground/60 hover:text-foreground"
                   }`}
                 >
@@ -96,6 +114,8 @@ export default function Header() {
               </li>
             ))}
           </ul>
+
+          {/* Theme Toggle Button */}
           <button
             className="w-10 h-10 rounded-full bg-transparent text-foreground cursor-pointer flex items-center justify-center transition-all duration-200 shrink-0 hover:text-accent focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
             onClick={toggleTheme}
@@ -138,6 +158,20 @@ export default function Header() {
               </svg>
             )}
           </button>
+
+          {/* Staggered Navigation Menu for Mobile Devices */}
+          <div className="md:hidden flex items-center">
+            <StaggeredMenu
+              position="right"
+              items={menuItems}
+              socialItems={socialItems}
+              displaySocials={true}
+              displayItemNumbering={true}
+              accentColor="#14b8a6"
+              colors={["#27272a", "#14b8a6"]}
+              dark={dark}
+            />
+          </div>
         </div>
       </nav>
     </header>

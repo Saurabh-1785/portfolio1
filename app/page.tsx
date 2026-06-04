@@ -46,6 +46,18 @@ const workHistory = [
 
 const projects = [
   {
+    title: "GoLink",
+    shortDescription: "A highly-scalable distributed URL shortener designed to redirect traffic with microsecond latency.",
+    description: `Problem:
+    Scaling a URL shortener to handle millions of redirects per second requires low-latency resolution, high availability, and efficient storage. Traditional relational database lookups become bottlenecks under heavy load.
+
+    Solution:
+    A highly scalable, distributed URL shortener built to handle massive traffic. Features a globally distributed database layer, high-performance in-memory caching, unique ID generation using a custom epoch-based generator, and robust redirection logic with integrated analytics.`,
+    github: "https://github.com/Saurabh-1785/golink.git",
+    demo: "",
+    status: "Completed" as const,
+  },
+  {
     title: "APE AI",
     shortDescription: "AI-powered platform that helps users generate, refine and optimize content using advanced language models.",
     description:
@@ -70,29 +82,6 @@ const projects = [
     github: "https://github.com/Saurabh-1785/PathBound.git",
     demo: "https://pathbound.vercel.app/",
     status: "Completed" as const,
-  },
-  {
-    title: "ResumeFlow",
-    shortDescription: "Resume screening and shortlisting tool that helps recruiters save time and hire smarter using automated parsing.",
-    description: `
-    An AI-powered CV generator that converts user input into a polished, ATS-optimized resume with professional formatting. It leverages real-time LaTeX compilation to provide instant preview and high-quality PDF output, ensuring accuracy, customization, and a seamless resume-building experience across devices.`,
-    github: "https://github.com/Saurabh-1785/ResumeFlow.git",
-    demo: "https://resume-flow-project.vercel.app/",
-    status: "Completed" as const,
-  },
-  {
-    title: "CodeSync",
-    shortDescription: "A real-time collaborative coding environment with live cursors, user presence, and conflict-free editing using CRDTs.",
-    description: `
-    Problem:
-    Traditional code collaboration relies on version control systems that are not truly real-time, leading to delays, merge conflicts, and inefficient teamwork. Developers often struggle with tracking changes, coordinating edits, and maintaining consistency when multiple people work on the same file simultaneously.
-
-    Solution:
-    CodeSync solves this by providing a real-time collaborative coding environment where multiple developers can edit code simultaneously with instant synchronization. Features like live cursors, user presence, and conflict-free editing using CRDTs ensure smooth collaboration. With built-in syntax highlighting and independent undo/redo history, it creates a seamless and efficient coding experience for teams working together from anywhere.`,
-    github: "https://github.com/Saurabh-1785/CodeSync.git",
-    demo: "https://code-sync-iv3p.vercel.app/",
-    status: "Completed" as const,
-    mobileOnly: true,
   },
 ];
 

@@ -25,7 +25,7 @@ const Footer = () => {
         {/* Left Column: Info & Socials & Map */}
         <div className="flex flex-col items-center gap-4 w-full md:w-[320px] shrink-0">
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-2xl font-black tracking-tighter text-foreground group cursor-default text-center">
+            <h2 className="text-2xl font-black tracking-tighter text-foreground group cursor-default text-center whitespace-nowrap">
               <span className="text-accent group-hover:text-foreground transition-colors duration-300">
                 SAURABH CHAUHAN
               </span>
@@ -50,7 +50,7 @@ const Footer = () => {
           </div>
 
           {/* Realistic High-Fidelity GIS Vector Map */}
-          <div className="relative w-full h-[100px] rounded-xl overflow-hidden border border-edge/30 group cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.15)] bg-card dark:bg-[#050505]">
+          <div className="hidden md:block relative w-full h-[100px] rounded-xl overflow-hidden border border-edge/30 group cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.15)] bg-card dark:bg-[#050505]">
             <div className="absolute inset-0 bg-gradient-to-br from-card-alt to-card dark:from-[#101010] dark:to-[#050505] transition-colors duration-500">
 
               <svg className="absolute inset-0 w-full h-full opacity-70" viewBox="0 0 400 120" preserveAspectRatio="none">
@@ -290,7 +290,7 @@ const Footer = () => {
       {/* Copyright Bar */}
       <div className="max-w-[1280px] mx-auto w-full px-12 border-t border-edge/10">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 py-3.5">
-          <div className="flex flex-col gap-0.5 items-start select-none">
+          <div className="flex flex-col gap-0.5 items-start select-none whitespace-nowrap">
             <p className="text-muted text-[10px] font-bold tracking-[0.1em] uppercase">
               © 2026 SAURABH CHAUHAN
             </p>

@@ -45,6 +45,14 @@ export default function HeroCard() {
         />
       </h1>
       <div className="flex md:hidden flex-col items-center py-4 gap-1">
+        {/* Mobile Profile Photo (Centered, no transition effect) */}
+        <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-white/20 mb-3 shadow-md bg-white/5">
+          <img
+            src="/Saurabh.webp"
+            alt="Saurabh Chauhan"
+            className="w-full h-full object-cover object-top"
+          />
+        </div>
         <h1 className="text-2xl font-extrabold leading-tight text-white text-center min-h-[32px]">
           <TextType
             text="Saurabh Chauhan"

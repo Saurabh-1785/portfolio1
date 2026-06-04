@@ -125,6 +125,21 @@ const MapRouteIcon = () => (
   </svg>
 );
 
+const LinkIcon = () => (
+  <svg
+    className="w-14 h-14 text-accent drop-shadow-[0_0_10px_rgba(20,184,166,0.6)] transition-all duration-300 group-hover:scale-105"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+  </svg>
+);
+
 const ResumeIcon = () => (
   <svg
     className="w-14 h-14 text-accent drop-shadow-[0_0_10px_rgba(20,184,166,0.6)] transition-all duration-300 group-hover:scale-105"
@@ -229,32 +244,36 @@ export default function ProjectGrid({
         >
           <div className="relative flex flex-col gap-6 pl-1.5">
             {/* Thread Line */}
-            <div className="absolute left-[54px] top-6 bottom-6 w-[1.5px] bg-edge/10" />
+            <div className="absolute left-[54px] top-6 bottom-6 w-[1.5px] bg-edge/10 hidden sm:block" />
 
             {workHistory.map((work) => (
               <div key={work.title} className="relative flex items-center justify-between w-full min-w-0 group gap-4">
-                <div className="flex items-center gap-6 min-w-0">
+                <div className="flex items-center gap-4 sm:gap-6 min-w-0 flex-1">
                   {/* Icon Box */}
                   <div className="w-12 h-12 rounded-xl bg-accent/5 border border-accent/15 flex items-center justify-center shrink-0 z-10 relative">
                     {work.icon === "code" ? <CodeIcon /> : <PeopleIcon />}
                   </div>
 
                   {/* Cyan Glowing Timeline Dot */}
-                  <div className="absolute left-[50px] w-2.5 h-2.5 rounded-full bg-accent border-[2px] border-[#000] z-20 shadow-[0_0_8px_rgba(20,184,166,0.7)]" />
+                  <div className="absolute left-[50px] w-2.5 h-2.5 rounded-full bg-accent border-[2px] border-[#000] z-20 shadow-[0_0_8px_rgba(20,184,166,0.7)] hidden sm:block" />
 
                   {/* Description Info */}
-                  <div className="flex flex-col min-w-0">
-                    <h4 className="text-[13px] md:text-sm font-bold text-foreground truncate group-hover:text-accent transition-colors duration-250">
+                  <div className="flex flex-col min-w-0 flex-1">
+                    <h4 className="text-[13px] md:text-sm font-bold text-foreground truncate group-hover:text-accent transition-colors duration-250 pr-2">
                       {work.title}
                     </h4>
                     <span className="text-[11px] font-medium text-secondary/60 mt-0.5">
                       {work.role}
                     </span>
+                    {/* Inline duration on mobile */}
+                    <span className="text-[9px] font-bold text-accent/80 uppercase tracking-wider mt-1 sm:hidden">
+                      {work.duration}
+                    </span>
                   </div>
                 </div>
 
-                {/* Duration Pills */}
-                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-accent/[0.02] border border-edge/10 shrink-0 select-none">
+                {/* Duration Pills (Desktop Only) */}
+                <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-accent/[0.02] border border-edge/10 shrink-0 select-none">
                   <CalendarIcon />
                   <span className="text-[9px] font-bold text-secondary/80 uppercase tracking-wider">
                     {work.duration}
@@ -295,8 +314,7 @@ export default function ProjectGrid({
               key={project.title}
               data-spotlight-card
               onClick={() => onOpenInfo(project.title)}
-              className={`bg-card border border-edge/10 rounded-[20px] p-4 md:p-5 flex flex-col h-full relative overflow-hidden transition-all duration-300 hover:translate-y-[-2px] group cursor-pointer ${project.mobileOnly ? " lg:hidden" : ""
-                }`}
+              className="bg-card border border-edge/10 rounded-[20px] p-4 md:p-5 flex flex-col h-full relative overflow-hidden transition-all duration-300 hover:translate-y-[-2px] group cursor-pointer"
             >
               {/* Card Visual Header with Dot Grid Background */}
               <div className="h-36 w-full flex items-center justify-center rounded-[14px] overflow-hidden mb-4 border border-edge/10 bg-accent/[0.01] relative select-none">
@@ -310,6 +328,7 @@ export default function ProjectGrid({
 
                 {/* Center Glowing Icon */}
                 <div className="relative z-10 flex items-center justify-center">
+                  {project.title === "GoLink" && <LinkIcon />}
                   {project.title === "APE AI" && <BrainIcon />}
                   {project.title === "PathBound" && <MapRouteIcon />}
                   {project.title === "ResumeFlow" && <ResumeIcon />}
