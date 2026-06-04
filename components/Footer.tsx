@@ -50,8 +50,8 @@ const Footer = () => {
           </div>
 
           {/* Realistic High-Fidelity GIS Vector Map */}
-          <div className="relative w-full h-[100px] rounded-xl overflow-hidden border border-edge/30 group cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.15)] bg-[#050505]">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#101010] to-[#050505] transition-colors duration-500">
+          <div className="relative w-full h-[100px] rounded-xl overflow-hidden border border-edge/30 group cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.15)] bg-card dark:bg-[#050505]">
+            <div className="absolute inset-0 bg-gradient-to-br from-card-alt to-card dark:from-[#101010] dark:to-[#050505] transition-colors duration-500">
 
               <svg className="absolute inset-0 w-full h-full opacity-70" viewBox="0 0 400 120" preserveAspectRatio="none">
                 {/* Topographic Contours */}
@@ -122,13 +122,13 @@ const Footer = () => {
                   <div className="absolute -inset-1 border border-accent/30 rounded-full animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]" />
                   <div className="w-1.5 h-1.5 bg-accent rounded-full shadow-[0_0_8px_rgba(20,184,166,0.9)] relative z-10 border border-white/30" />
                 </div>
-                <span className="text-[7px] font-bold text-white uppercase tracking-widest bg-black/80 px-2 py-0.5 rounded shadow-sm select-none border border-edge/20 backdrop-blur-sm">
+                <span className="text-[7px] font-bold text-foreground dark:text-white uppercase tracking-widest bg-card/90 dark:bg-black/80 px-2 py-0.5 rounded shadow-sm select-none border border-edge/20 backdrop-blur-sm">
                   NIT Hamirpur
                 </span>
               </div>
 
               {/* Subtle Vignette */}
-              <div className="absolute inset-0 shadow-[inset_0_0_30px_rgba(0,0,0,0.4)] pointer-events-none" />
+              <div className="absolute inset-0 shadow-[inset_0_0_30px_rgba(0,0,0,0.04)] dark:shadow-[inset_0_0_30px_rgba(0,0,0,0.4)] pointer-events-none" />
             </div>
 
             <a
@@ -256,7 +256,7 @@ const Footer = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email Address"
                   required
-                  className="w-full bg-[#08080a]/60 border border-edge/20 rounded-lg pl-9 pr-4 py-2 text-xs focus:border-accent/40 focus:ring-1 focus:ring-accent/25 outline-none transition-all duration-300 placeholder:text-muted/40 font-bold text-foreground"
+                  className="w-full bg-card/60 dark:bg-[#08080a]/60 border border-edge/20 rounded-lg pl-9 pr-4 py-2 text-xs focus:border-accent/40 focus:ring-1 focus:ring-accent/25 outline-none transition-all duration-300 placeholder:text-muted/40 font-bold text-foreground"
                 />
               </div>
 

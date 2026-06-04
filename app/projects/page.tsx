@@ -4,8 +4,27 @@ import { useState } from "react";
 
 const projects = [
   {
+    title: "GoLink- Distributed URL Shortener",
+    imageUrl: "/proj/url.webp",
+    date: "May 2026",
+    pinned: true,
+    description: `Problem:
+Scaling a URL shortener to handle millions of redirects per second requires low-latency resolution, high availability, and efficient storage. Traditional relational database lookups become bottlenecks under heavy load.
+
+Solution:
+A highly scalable, distributed URL shortener built to handle massive traffic. Features a globally distributed database layer, high-performance in-memory caching, unique ID generation using a custom epoch-based generator, and robust redirection logic with integrated analytics.`,
+    tech: ["GO", "REDIS", "POSTGRESQL", "DOCKER"],
+    status: "Completed" as const,
+    links: [
+      { label: "Live Demo", href: "" },
+      { label: "View Code", href: "https://github.com/Saurabh-1785/golink.git" },
+    ],
+  },
+  {
     title: "APE AI",
     imageUrl: "/proj/ape.webp",
+    date: "May 2026",
+    pinned: true,
     description: `Problem: 
 Companies receive large volumes of customer feedback from multiple sources, but this data is unstructured and difficult to analyze. Product teams must manually review, categorize, and convert feedback into requirements, which is time-consuming, error-prone, and often leads to missed insights and delayed product improvements.
 
@@ -21,17 +40,20 @@ Automatically transforms raw customer feedback into structured product requireme
   {
     title: "TEDxNIT Hamirpur Website",
     imageUrl: "/proj/tedx.webp",
+    date: "Dec 2025",
+    pinned: true,
     description: `The official TEDx NIT Hamirpur 2026 website, designed and developed to represent the organization’s digital presence. Built with a modern, responsive interface, it delivers a seamless user experience across devices while showcasing events, speakers, and initiatives.`,
     tech: ["NEXT.JS", "TAILWIND", "ANIMATIONS"],
     status: "Completed" as const,
     links: [
-      { label: "Live Demo", href: "https://www.tedxnithamirpur.com/" },
+      { label: "Live Demo", href: "https://tedx-website-self.vercel.app/" },
       { label: "View Code", href: "https://github.com/Saurabh-1785/tedx-website.git" },
     ],
   },
   {
     title: "PathBound",
     imageUrl: "/proj/pathbound.webp",
+    date: "Dec 2025",
     description: `Problem:
 Traditional currency exchange and remittance systems expose users to unpredictable exchange rates and hidden fees. 
 
@@ -47,6 +69,7 @@ PathBound addresses this by enabling rate-protected exchange intents using block
   {
     title: "ResumeFlow",
     imageUrl: "/proj/resumeflow.webp",
+    date: "Sept 2025",
     description: `An AI-powered CV generator that converts user input into a polished, ATS-optimized resume with professional formatting. It leverages real-time LaTeX compilation to provide instant preview and high-quality PDF output.`,
     tech: ["REACT", "NODE.JS", "LATEX", "GOOGLE GEMINI API"],
     status: "Completed" as const,
@@ -58,6 +81,7 @@ PathBound addresses this by enabling rate-protected exchange intents using block
   {
     title: "CodeSync",
     imageUrl: "/proj/codesync.webp",
+    date: "Jan 2026",
     description: `Problem:
 Traditional code collaboration relies on version control systems that are not truly real-time.
 
@@ -73,6 +97,7 @@ CodeSync provides a real-time collaborative coding environment where multiple de
   {
     title: "VeriJS",
     imageUrl: "/proj/verijs.webp",
+    date: "Jan 2026",
     description: `Problem:
 Identifying bugs and code issues in JavaScript often relies on executing the code or manual reviews.
 
@@ -88,6 +113,7 @@ VeriJS provides a lightweight static analysis tool that detects issues without r
   {
     title: "Zenith",
     imageUrl: "/proj/zenith.webp",
+    date: "March 2026",
     description: `Problem:
 Manually assigning tasks to engineers is time-consuming and often inefficient.
 
@@ -102,6 +128,7 @@ Zenith automates task allocation by intelligently matching tasks with the most s
   {
     title: "GeoFinder",
     imageUrl: "/proj/geofinder.webp",
+    date: "Feb 2026",
     description: `Problem:
 Finding nearby resources like hospitals or restaurants in real-time can be inefficient.
 
@@ -117,6 +144,7 @@ GeoFinder addresses this by offering a WebGIS-based platform that integrates geo
   {
     title: "ECI-Secure Vote",
     imageUrl: "/proj/eci.webp",
+    date: "Oct 2025",
     description: `Problem:
 Traditional voting systems limit accessibility and raise concerns around security and coercion.
 
@@ -131,6 +159,7 @@ ECI Secure Vote provides a secure remote voting platform powered by advanced cry
   {
     title: "RBAC",
     imageUrl: "/proj/rbac.webp",
+    date: "March 2026",
     description: `A Role-Based Access Control (RBAC) system designed to manage and enforce secure authentication and authorization across applications.`,
     tech: ["JWT", "BCRYPT", "EXPRESS.JS"],
     status: "Completed" as const,
@@ -141,6 +170,7 @@ ECI Secure Vote provides a secure remote voting platform powered by advanced cry
   {
     title: "Interactive Tip Calculator",
     imageUrl: "/proj/interactive.webp",
+    date: "Jul 2025",
     description: "A platform to calculate Tip amount and its distribution among every individual.",
     tech: ["HTML", "CSS", "JAVASCRIPT"],
     status: "Completed" as const,
@@ -232,109 +262,119 @@ export default function ProjectsPage() {
 
         {/* Grid Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
-          {projects.map((project, i) => {
-            const githubLink = project.links.find(l => l.label === "View Code")?.href;
-            const demoLink = project.links.find(l => l.label === "Live Demo")?.href;
-            const date = i === 0 ? "May 2024" : i === 1 ? "Feb 2024" : i < 5 ? "Oct 2023" : "Jul 2022";
+          {[...projects]
+            .sort((a, b) => {
+              // Pin specifically marked projects to the top
+              if (a.pinned && !b.pinned) return -1;
+              if (!a.pinned && b.pinned) return 1;
+              if (a.pinned && b.pinned) {
+                // Maintain relative order as defined in the projects array
+                return projects.findIndex(p => p.title === a.title) - projects.findIndex(p => p.title === b.title);
+              }
 
-            return (
-              <div 
-                key={project.title} 
-                className="group flex flex-col bg-card/50 border border-edge rounded-[24px] overflow-hidden hover:border-accent/50 hover:bg-card transition-all duration-500 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)] cursor-pointer"
-                onClick={() => setInfoOpen(project.title)}
-              >
-                {/* Image Container (Replaced with Green Dots) */}
+              const months: Record<string, number> = {
+                jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+                jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
+              };
+              const parseDate = (d: string) => {
+                const parts = d.trim().split(/\s+/);
+                if (parts.length === 2) {
+                  const m = parts[0].toLowerCase().substring(0, 3);
+                  const y = parseInt(parts[1], 10);
+                  return new Date(y, months[m] ?? 0).getTime();
+                }
+                return 0;
+              };
+              return parseDate(b.date) - parseDate(a.date);
+            })
+            .map((project) => {
+              const githubLink = project.links.find(l => l.label === "View Code")?.href;
+              const demoLink = project.links.find(l => l.label === "Live Demo")?.href;
+              const date = project.date;
+
+              return (
                 <div
-                  className="relative h-[120px] overflow-hidden bg-card-alt shrink-0 transition-colors duration-500"
+                  key={project.title}
+                  className="group flex flex-col bg-card/50 border border-edge rounded-[24px] overflow-hidden hover:border-accent/50 hover:bg-card transition-all duration-500 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)] cursor-pointer"
+                  onClick={() => setInfoOpen(project.title)}
                 >
-                  <div className="absolute inset-0 bg-[radial-gradient(circle,#10b981_1.5px,transparent_1.5px)] bg-[size:20px_20px] opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent opacity-80 group-hover:opacity-50 transition-opacity duration-500" />
-                </div>
-
-                {/* Card Content */}
-                <div className="p-5 md:p-6 flex flex-col flex-1 relative z-10">
-                  <div className="flex items-center gap-2 mb-3 text-accent font-mono text-xs font-bold uppercase">
-                    <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-                    {date}
-                  </div>
-
-                  <h3
-                    className="text-xl md:text-xl font-black text-foreground mb-2 line-clamp-2 group-hover:text-accent transition-colors"
+                  {/* Image Container (Replaced with Green Dots) */}
+                  <div
+                    className="relative h-[120px] overflow-hidden bg-card-alt shrink-0 transition-colors duration-500"
                   >
-                    {project.title}
-                  </h3>
-
-                  <div className="flex flex-wrap gap-2 mb-5 flex-1">
-                    {project.tech.map((tag) => (
-                      <span
-                        key={tag}
-                        className="bg-accent/5 text-[10px] font-bold text-accent px-2.5 py-1 rounded-md border border-accent/10 uppercase tracking-wider"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                    <div className="absolute inset-0 bg-[radial-gradient(circle,#10b981_1.5px,transparent_1.5px)] bg-[size:20px_20px] opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent opacity-80 group-hover:opacity-50 transition-opacity duration-500" />
                   </div>
 
-                  {/* Footer / Links */}
-                  <div className="flex items-center justify-between pt-4 border-t border-edge/40">
-                    <div className="flex items-center gap-4">
-                      <button
-                        className="text-secondary hover:text-foreground transition-colors p-1"
-                        aria-label="More info"
-                      >
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                          <circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" />
-                        </svg>
-                      </button>
-
-                      {githubLink && (
-                        <a
-                          href={githubLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-secondary hover:text-foreground transition-colors p-1"
-                          aria-label="GitHub Repository"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-                          </svg>
-                        </a>
-                      )}
-
-                      {demoLink && (
-                        <a
-                          href={demoLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-secondary hover:text-foreground transition-colors p-1"
-                          aria-label="Live Demo"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" />
-                          </svg>
-                        </a>
-                      )}
+                  {/* Card Content */}
+                  <div className="p-5 md:p-6 flex flex-col flex-1 relative z-10">
+                    <div className="flex items-center gap-2 mb-3 text-accent font-mono text-xs font-bold uppercase">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                      {date}
                     </div>
 
-                    <a
-                      href={demoLink || githubLink || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-accent text-[11px] font-black tracking-widest uppercase flex items-center gap-1.5 group/link hover:text-accent/80 transition-colors"
-                      onClick={(e) => e.stopPropagation()}
+                    <h3
+                      className="text-xl md:text-xl font-black text-foreground mb-2 line-clamp-2 group-hover:text-accent transition-colors"
                     >
-                      VIEW PROJECT
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">
-                        <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
-                      </svg>
-                    </a>
+                      {project.title}
+                    </h3>
+
+                    <div className="flex flex-wrap gap-2 mb-5">
+                      {project.tech.map((tag) => (
+                        <span
+                          key={tag}
+                          className="bg-accent/5 text-[10px] font-bold text-accent px-2.5 py-1 rounded-md border border-accent/10 uppercase tracking-wider"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Footer / Links */}
+                    <div className="flex items-center justify-between pt-4 border-t border-edge/40 mt-auto">
+                      <div className="flex items-center gap-4">
+                        <button
+                          className="text-secondary hover:text-foreground transition-colors p-1"
+                          aria-label="More info"
+                        >
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" />
+                          </svg>
+                        </button>
+
+                        {githubLink && (
+                          <a
+                            href={githubLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-secondary hover:text-foreground transition-colors p-1"
+                            aria-label="GitHub Repository"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                            </svg>
+                          </a>
+                        )}
+                      </div>
+
+                      <a
+                        href={demoLink || githubLink || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-accent text-[11px] font-black tracking-widest uppercase flex items-center gap-1.5 group/link hover:text-accent/80 transition-colors"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        VIEW PROJECT
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">
+                          <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
 
         {/* Info Modal */}
