@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
 
 const workHistory = [
   {
@@ -14,37 +13,79 @@ const workHistory = [
   {
     title: "TEDxNIT Hamirpur",
     role: "Core Team Member",
-    description: "The official TEDx NIT Hamirpur 2026 website, designed and developed to represent the organization’s digital presence. Built with a modern, responsive interface, it delivers a seamless user experience across devices while showcasing events, speakers, and initiatives. The platform ensures structured content delivery, smooth navigation, and a professional interface for engaging audiences and promoting TEDx activities effectively.",
+    description: "Designed and developed the official TEDx NIT Hamirpur 2026 website to represent the organization’s digital presence. Built with a modern, responsive interface, it delivers a seamless user experience across devices while showcasing events, speakers, and initiatives. The platform ensures structured content delivery, smooth navigation, and a professional interface for engaging audiences and promoting TEDx activities effectively.",
     duration: "2024 - Present",
     tags: ["Web Dev", "Branding", "Responsive Design"],
+  },
+  {
+    title: "Google Student Ambassador",
+    role: "Student Ambassador",
+    description: "Representing Google technologies on campus, bridging the gap between developers and students. Organising peer-to-peer workshops, tech talks, and hackathons to build a vibrant developer community and help students grow their skill sets using Google Developer resources.",
+    duration: "2026 - Present",
+    tags: ["Community", "Google", "Advocacy"],
   },
 ];
 
 export default function WorkPage() {
-  const [infoOpen, setInfoOpen] = useState<string | null>(null);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const toggleExpand = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
 
   return (
-    <div className="max-w-4xl mx-auto py-6 md:py-8">
-      <div className="text-center mb-10 md:mb-12">
-        <h1 className="text-4xl md:text-5xl font-black tracking-tight text-foreground">
-          Work
-        </h1>
+    <div className="relative min-h-screen">
+      {/* Minimal Professional Background */}
+      <div className="pointer-events-none fixed inset-0 -z-10 flex justify-center overflow-hidden">
+        {/* Subtle Ambient Glow */}
+        <div className="absolute top-[-20%] w-[80%] md:w-[60%] h-[500px] bg-accent/10 blur-[120px] rounded-full" />
+        {/* Lightweight Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-[0.03] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
       </div>
 
-      <ScrollStack
-        className="relative"
-        cardGap={20}
-        scaleStep={0.04}
-        stackGap={12}
-        pinOffset={0.15}
-      >
-        {workHistory.map((work, i) => (
-          <ScrollStackItem key={i}>
-            <div 
-              onClick={() => setInfoOpen(work.title)}
-              className="group bg-card border-[1.5px] border-edge rounded-[24px] p-6 md:px-10 md:py-8 transition-all duration-300 hover:border-edge-hover shadow-[0_4px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.2)] cursor-pointer"
+      <div className="max-w-7xl mx-auto py-12 px-6 md:px-12 relative z-10">
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 pb-8 md:pb-12 border-b border-edge/20">
+          <div>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-8 h-[1px] bg-accent"></div>
+              <span className="text-accent font-mono text-sm tracking-widest">03</span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-black tracking-tight text-foreground mb-6">
+              Work <span className="text-accent">Experience</span>
+            </h2>
+            <p className="text-secondary max-w-md leading-relaxed text-sm">
+              My professional journey, community initiatives, and roles. Click on any experience to learn more about my responsibilities and achievements.
+            </p>
+          </div>
+
+          <div className="hidden md:block relative group">
+            <div className="absolute inset-0 bg-accent/5 rounded-xl border border-accent/20 border-dashed transform -skew-x-6 transition-transform duration-500 group-hover:skew-x-0" />
+            <div className="relative p-6 font-mono text-xs text-secondary leading-loose">
+              <div className="flex items-center gap-3">
+                <span className="text-accent">{'>'}</span>
+                Collaborating. Building.
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-accent">{'>'}</span>
+                Learning continuously.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      {/* Horizontal Stack Section */}
+      <div className="flex flex-col gap-6 w-full max-w-4xl mx-auto mb-16">
+        {workHistory.map((work, i) => {
+          const isExpanded = expandedIndex === i;
+          return (
+            <div
+              key={work.title}
+              onClick={() => toggleExpand(i)}
+              className="group flex flex-col bg-card/50 border border-edge rounded-[24px] p-6 md:px-8 md:py-6 overflow-hidden hover:border-accent/50 hover:bg-card transition-all duration-500 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] cursor-pointer"
             >
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              {/* Header Info */}
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 w-full">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
                     <span className="text-accent text-[10px] font-black tracking-widest uppercase py-0.5 px-2 bg-accent/10 border border-accent/20 rounded">
@@ -54,104 +95,64 @@ export default function WorkPage() {
                       {work.duration}
                     </span>
                   </div>
-                  <h3 className="text-xl md:text-2xl font-black text-foreground mb-1">
+                  <h3 className="text-xl md:text-2xl font-black text-foreground mb-1 group-hover:text-accent transition-colors duration-300">
                     {work.title}
                   </h3>
-                  <p className="text-accent text-sm font-bold opacity-80 mb-4 md:mb-0">
+                  <p className="text-accent text-sm font-bold opacity-80">
                     {work.role}
                   </p>
                 </div>
 
-                <div className="flex flex-wrap gap-1.5 md:max-w-[300px] md:justify-end">
-                  {work.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[9px] font-bold text-muted border border-edge/20 px-2 py-0.5 rounded uppercase tracking-tight bg-card-alt"
+                {/* Right side tags & chevron */}
+                <div className="flex items-center gap-4 shrink-0">
+                  <div className="flex flex-wrap gap-2">
+                    {work.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="bg-accent/5 text-[10px] font-bold text-accent px-2.5 py-1 rounded-md border border-accent/10 uppercase tracking-wider"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="text-secondary/60 group-hover:text-accent transition-colors duration-300 ml-2">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className={`transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
                     >
-                      {tag}
-                    </span>
-                  ))}
-                  <div className="ml-2 text-accent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" />
+                      <polyline points="6 9 12 15 18 9" />
                     </svg>
                   </div>
                 </div>
               </div>
-              
-              <div className="mt-6 pt-6 border-t border-edge/10">
-                <p className="text-secondary text-sm leading-relaxed opacity-80 line-clamp-2 md:line-clamp-3">
-                  {work.description}
-                </p>
-                <div className="mt-3 text-accent text-[11px] font-bold uppercase tracking-widest flex items-center gap-1.5 md:hidden">
-                  Read More <span className="text-base">→</span>
+
+              {/* Collapsible Expandable description using CSS Grid transition trick */}
+              <div className={`grid transition-all duration-300 ease-in-out ${isExpanded ? "grid-rows-[1fr] opacity-100 mt-6 pt-6 border-t border-edge/10" : "grid-rows-[0fr] opacity-0"}`}>
+                <div className="overflow-hidden">
+                  <p className="text-secondary text-sm md:text-base leading-relaxed text-justify opacity-90">
+                    {work.description}
+                  </p>
                 </div>
               </div>
             </div>
-          </ScrollStackItem>
-        ))}
-      </ScrollStack>
-
-      <div className="h-[20vh]" />
+          );
+        })}
+      </div>
 
       <div className="text-center pb-10">
         <p className="text-secondary text-sm opacity-60">
-          More coming soon...
+          More experiences coming soon...
         </p>
       </div>
-
-      {/* Info Modal */}
-      {infoOpen && (
-        <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
-          onClick={() => setInfoOpen(null)}
-        >
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-md" />
-          <div
-            className="relative bg-card border-[1.5px] border-edge rounded-[24px] p-8 max-w-md w-full shadow-2xl animate-[modalIn_0.2s_ease-out]"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setInfoOpen(null)}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full border border-edge bg-transparent text-foreground cursor-pointer flex items-center justify-center hover:bg-accent/10 hover:text-accent hover:border-accent transition-all duration-200"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-
-            {(() => {
-              const work = workHistory.find((e) => e.title === infoOpen);
-              if (!work) return null;
-              return (
-                <>
-                  <div className="mb-6">
-                    <div className="flex items-center gap-3 mb-2">
-                       <span className="text-muted text-[11px] font-bold tracking-wider uppercase opacity-60">{work.duration}</span>
-                    </div>
-                    <h3 className="text-2xl font-black text-foreground mb-2">
-                      {work.title}
-                    </h3>
-                    <p className="text-accent text-sm font-bold opacity-90 mb-4">{work.role}</p>
-                    <div className="flex gap-1.5 flex-wrap">
-                      {work.tags.map((tag) => (
-                        <span key={tag} className="bg-accent/10 text-accent px-3 py-1 rounded-full text-[11px] font-bold border border-accent/20">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="mt-6 pt-6 border-t border-edge/10">
-                    <p className="text-secondary text-sm md:text-base leading-relaxed text-justify opacity-90">
-                      {work.description}
-                    </p>
-                  </div>
-                </>
-              );
-            })()}
-          </div>
-        </div>
-      )}
     </div>
+  </div>
   );
 }
