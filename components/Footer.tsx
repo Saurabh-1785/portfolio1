@@ -301,7 +301,7 @@ const Footer = () => {
 
           <div className="flex items-center gap-4">
             <p className="text-muted text-[10px] font-bold tracking-[0.1em] uppercase select-none">
-              LAST UPDATED: 2026-05-22
+              LAST UPDATED: 2026-06-04
             </p>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
