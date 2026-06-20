@@ -179,6 +179,37 @@ ECI Secure Vote provides a secure remote voting platform powered by advanced cry
       { label: "View Code", href: "https://github.com/Saurabh-1785/interactive-tip-calculator" },
     ],
   },
+  {
+    title: "GoCrawl",
+    imageUrl: "/proj/gocrawl.svg",
+    date: "June 2026",
+    description: `Problem:
+Crawling the web at high throughput can be slow and inefficient when implemented sequentially, leading to long runtimes, missed links, and duplicate visits.
+
+Solution:
+GoCrawl is a high-performance, concurrent web crawler written in Go that uses Goroutines and Channels for parallel fetching, efficient URL deduplication, and configurable traversal limits to maximize throughput while avoiding duplicates.`,
+    tech: ["GO", "GOROUTINES", "CHANNELS"],
+    status: "Completed" as const,
+    links: [
+      { label: "Live Demo", href: "" },
+      { label: "View Code", href: "https://github.com/Saurabh-1785/gocrawl.git" },
+    ],
+  },
+  {
+    title: "CryptX",
+    imageUrl: "/proj/cryptx.webp",
+    date: "June 2026",
+    description: `Problem:
+Encrypting large directory trees sequentially is slow and resource-inefficient, which hinders backups and secure transfers for large datasets.
+
+Solution:
+CryptX is a parallel file encryption engine in C++ that leverages POSIX process-based concurrency to encrypt files concurrently across directories, improving throughput and enabling secure, scalable encryption with robust error handling.`,
+    tech: ["C++", "POSIX", "CONCURRENCY"],
+    status: "Prototype" as const,
+    links: [
+      { label: "View Code", href: "https://github.com/Saurabh-1785/cryptx.git" },
+    ],
+  },
 ];
 
 const FormattedDescription = ({ text }: { text: string }) => {

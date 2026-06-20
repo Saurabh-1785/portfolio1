@@ -176,6 +176,25 @@ const CodeSyncIcon = () => (
   </svg>
 );
 
+const GoCrawlIcon = () => (
+  <svg className="w-20 h-16 text-accent drop-shadow-[0_0_12px_rgba(16,185,129,0.6)]" viewBox="0 0 120 80" fill="none" stroke="currentColor" strokeWidth="1.6">
+    <defs>
+      <linearGradient id="gc" x1="0" x2="1">
+        <stop offset="0%" stopColor="#0ea5a1" />
+        <stop offset="100%" stopColor="#10b981" />
+      </linearGradient>
+    </defs>
+    <path d="M18 56 L44 36 L68 48 L86 30" stroke="url(#gc)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx="44" cy="36" r="4" fill="url(#gc)" />
+    <circle cx="68" cy="48" r="3" fill="url(#gc)" />
+    <circle cx="86" cy="30" r="3" fill="url(#gc)" />
+    <g transform="translate(82,40)">
+      <circle cx="8" cy="8" r="12" fill="none" stroke="url(#gc)" strokeWidth="2" />
+      <path d="M18 18 L28 28" stroke="url(#gc)" strokeWidth="2" strokeLinecap="round" />
+    </g>
+  </svg>
+);
+
 // GDG Work Icon (Code Brackets inside square)
 const CodeIcon = () => (
   <svg className="w-5 h-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -330,7 +349,7 @@ export default function ProjectGrid({
                 <div className="relative z-10 flex items-center justify-center">
                   {project.title === "GoLink" && <LinkIcon />}
                   {project.title === "APE AI" && <BrainIcon />}
-                  {project.title === "PathBound" && <MapRouteIcon />}
+                  {project.title === "GoCrawl" && <GoCrawlIcon />}
                   {project.title === "ResumeFlow" && <ResumeIcon />}
                 </div>
 
@@ -395,33 +414,6 @@ export default function ProjectGrid({
                       </svg>
                     </a>
                   )}
-
-                  {/* Demo/External Link Button */}
-                  {project.demo && (
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="w-7 h-7 rounded-full border border-edge/15 flex items-center justify-center text-secondary/70 hover:text-accent hover:border-accent/40 bg-accent/5 hover:scale-105 transition-all duration-200"
-                      aria-label={`${project.title} Demo`}
-                    >
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                        <polyline points="15 3 21 3 21 9" />
-                        <line x1="10" y1="14" x2="21" y2="3" />
-                      </svg>
-                    </a>
-                  )}
                 </div>
 
                 {/* View Project Button */}
@@ -433,10 +425,6 @@ export default function ProjectGrid({
                   className="text-[10px] font-bold text-accent hover:text-white border border-accent/20 hover:border-accent hover:bg-accent px-3 py-1.5 rounded-lg transition-all duration-250 flex items-center gap-1 cursor-pointer"
                 >
                   <span>View Project</span>
-                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                    <line x1="7" y1="17" x2="17" y2="7" />
-                    <polyline points="7 7 17 7 17 17" />
-                  </svg>
                 </a>
               </div>
             </div>

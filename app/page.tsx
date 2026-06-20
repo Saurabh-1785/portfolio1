@@ -46,14 +46,14 @@ const workHistory = [
 
 const projects = [
   {
-    title: "GoLink",
-    shortDescription: "A highly-scalable distributed URL shortener designed to redirect traffic with microsecond latency.",
+    title: "GoCrawl",
+    shortDescription: "A high-performance web crawler built in Go that discovers links concurrently at scale.",
     description: `Problem:
-    Scaling a URL shortener to handle millions of redirects per second requires low-latency resolution, high availability, and efficient storage. Traditional relational database lookups become bottlenecks under heavy load.
+    Crawling the web at high throughput can be slow and inefficient when implemented sequentially, leading to long runtimes, missed links, and duplicate visits.
 
     Solution:
-    A highly scalable, distributed URL shortener built to handle massive traffic. Features a globally distributed database layer, high-performance in-memory caching, unique ID generation using a custom epoch-based generator, and robust redirection logic with integrated analytics.`,
-    github: "https://github.com/Saurabh-1785/golink.git",
+    GoCrawl is a high-performance, concurrent web crawler written in Go that uses Goroutines and Channels for parallel fetching, efficient URL deduplication, and configurable traversal limits to maximize throughput while avoiding duplicates.`,
+    github: "https://github.com/Saurabh-1785/gocrawl.git",
     demo: "",
     status: "Completed" as const,
   },
@@ -68,19 +68,18 @@ const projects = [
     Automatically transforms raw customer feedback into structured product requirements. It analyzes feedback, identifies key issues, generates validated requirements, and converts them into engineering-ready tasks, enabling faster and more data-driven product decision-making.`,
     github: "https://github.com/Saurabh-1785/apeai.git",
     demo: "https://apeai-nine.vercel.app/",
-    status: "In Progress" as const,
+    status: "Completed" as const,
   },
   {
-    title: "PathBound",
-    shortDescription: "A travel companion that helps users discover personalized routes, nearby places and plan memorable journeys.",
-    description: `
-    Problem:
-    Traditional currency exchange and remittance systems expose users to unpredictable exchange rates and hidden fees. In volatile markets, users often receive significantly less than expected, with little transparency or control over the conversion rate. Additionally, there is no mechanism to set conditions like minimum acceptable rates or timing, leaving users dependent on centralized intermediaries.
+    title: "GoLink",
+    shortDescription: "A highly-scalable distributed URL shortener designed to redirect traffic with microsecond latency.",
+    description: `Problem:
+    Scaling a URL shortener to handle millions of redirects per second requires low-latency resolution, high availability, and efficient storage. Traditional relational database lookups become bottlenecks under heavy load.
 
     Solution:
-    PathBound addresses this by enabling rate-protected exchange intents using blockchain-based path payments. Users can define a minimum acceptable exchange rate and a valid time window for execution, ensuring better control and predictability. Funds remain secure under user custody until execution, and transactions are processed atomically, guaranteeing that exchanges either complete fully at the desired rate or not at all.`,
-    github: "https://github.com/Saurabh-1785/PathBound.git",
-    demo: "https://pathbound.vercel.app/",
+    A highly scalable, distributed URL shortener built to handle massive traffic. Features a globally distributed database layer, high-performance in-memory caching, unique ID generation using a custom epoch-based generator, and robust redirection logic with integrated analytics.`,
+    github: "https://github.com/Saurabh-1785/golink.git",
+    demo: "",
     status: "Completed" as const,
   },
 ];
