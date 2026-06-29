@@ -27,12 +27,12 @@ export default function ProjectModal({ projects, infoOpen, onClose }: ProjectMod
 
       {/* Modal Card */}
       <div
-        className="relative bg-card border-[1.5px] border-edge rounded-[20px] p-6 md:p-8 max-w-md w-full shadow-[0_24px_64px_var(--shadow)] animate-[modalIn_0.2s_ease-out]"
+        className="relative bg-card border-[1.5px] border-edge rounded-[20px] p-6 md:p-8 max-w-md w-full shadow-[0_24px_64px_var(--shadow)] animate-[modalIn_0.2s_ease-out] max-h-[85vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 w-8 h-8 rounded-full border-[1.5px] border-edge bg-transparent text-foreground cursor-pointer flex items-center justify-center transition-all duration-200 delay-75 hover:bg-btn hover:text-btn-text hover:border-btn"
+          className="absolute top-4 right-4 w-8 h-8 rounded-full border-[1.5px] border-edge bg-transparent text-foreground cursor-pointer flex items-center justify-center transition-all duration-200 delay-75 hover:bg-btn hover:text-btn-text hover:border-btn z-10"
           aria-label="Close modal"
         >
           <svg
@@ -50,7 +50,7 @@ export default function ProjectModal({ projects, infoOpen, onClose }: ProjectMod
           </svg>
         </button>
 
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center gap-3 mb-4 shrink-0 pr-8">
           <h3 className="text-xl font-bold text-foreground">
             {project.title}
           </h3>
@@ -60,7 +60,7 @@ export default function ProjectModal({ projects, infoOpen, onClose }: ProjectMod
             {project.status}
           </span>
         </div>
-        <div className="text-secondary text-[15px] leading-[1.8] space-y-6 text-justify">
+        <div className="text-secondary text-[13px] md:text-[15px] leading-[1.8] space-y-6 text-justify flex-1 overflow-y-auto pr-2 min-h-0">
           {project.description.split("\n\n").map((para, i) => (
             <p key={i}>
               {para.trim().split(/(\bProblem:|\bSolution:)/).map((part, j) => {

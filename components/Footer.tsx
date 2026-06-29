@@ -5,12 +5,37 @@ import { useState } from "react";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Subscribing email:", email);
-    setEmail("");
-    alert("Thanks for getting in touch!");
+    setStatus("loading");
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/saurabhchauhan1785@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          email: email,
+          message: `A visitor with email ${email} wants to get in touch with you from your portfolio.`
+        })
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setEmail("");
+        setTimeout(() => setStatus("idle"), 6000);
+      } else {
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 4000);
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+    }
   };
 
   return (
@@ -262,27 +287,42 @@ const Footer = () => {
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-lg border border-accent/20 hover:border-accent bg-accent/[0.02] hover:bg-accent/5 text-accent hover:text-accent/90 text-xs font-black uppercase tracking-widest transition-all duration-300 cursor-pointer shadow-sm"
+                disabled={status === "loading"}
+                className="w-full flex items-center justify-center gap-2 py-2 px-4 rounded-lg border border-accent/20 hover:border-accent bg-accent/[0.02] hover:bg-accent/5 text-accent hover:text-accent/90 text-xs font-black uppercase tracking-widest transition-all duration-300 cursor-pointer shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <span>SEND MESSAGE</span>
-                <svg
-                  width="11"
-                  height="11"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="22" y1="2" x2="11" y2="13" />
-                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
-                </svg>
+                <span>{status === "loading" ? "SENDING..." : "SEND MESSAGE"}</span>
+                {status !== "loading" && (
+                  <svg
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <line x1="22" y1="2" x2="11" y2="13" />
+                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                  </svg>
+                )}
               </button>
             </form>
-            <p className="text-xs font-medium text-secondary/40 mt-2 text-left select-none whitespace-nowrap">
-              I'll get back to you as soon as possible!
-            </p>
+            {status === "success" && (
+              <p className="text-xs font-medium text-emerald-500 mt-2 text-left select-none animate-pulse">
+                Message sent successfully!
+              </p>
+            )}
+            {status === "error" && (
+              <p className="text-xs font-medium text-rose-500 mt-2 text-left select-none">
+                Something went wrong. Please try again.
+              </p>
+            )}
+            {status === "idle" && (
+              <p className="text-xs font-medium text-secondary/40 mt-2 text-left select-none whitespace-nowrap">
+                I'll get back to you as soon as possible!
+              </p>
+            )}
           </div>
         </div>
       </div>
@@ -301,7 +341,7 @@ const Footer = () => {
 
           <div className="flex items-center gap-4">
             <p className="text-muted text-[10px] font-bold tracking-[0.1em] uppercase select-none">
-              LAST UPDATED: 2026-06-04
+              LAST UPDATED: 2026-06-29
             </p>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

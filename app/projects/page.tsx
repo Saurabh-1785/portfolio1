@@ -4,6 +4,19 @@ import { useState } from "react";
 
 const projects = [
   {
+    title: "GoSearch - High-Performance Search Engine",
+    imageUrl: "/proj/gosearch.svg",
+    date: "June 2026",
+    pinned: true,
+    description: `GoSearch is a high-performance search engine built from scratch in Go, featuring concurrent indexing, an inverted index, BM25 ranking, Boolean search, snippet generation, binary-compressed postings, and a REST API. It integrates with GoCrawl to index web content and demonstrates core information retrieval concepts such as tokenization, stemming, caching, and query optimization.`,
+    tech: ["GO", "BM25", "CONCURRENCY", "REST API"],
+    status: "Completed" as const,
+    links: [
+      { label: "Live Demo", href: "" },
+      { label: "View Code", href: "https://github.com/saurabh-1785/go-search.git" },
+    ],
+  },
+  {
     title: "GoLink- Distributed URL Shortener",
     imageUrl: "/proj/url.webp",
     date: "May 2026",
@@ -21,7 +34,7 @@ A highly scalable, distributed URL shortener built to handle massive traffic. Fe
     ],
   },
   {
-    title: "APE AI",
+    title: "APE AI - Feedback-to-PRD Generator",
     imageUrl: "/proj/ape.webp",
     date: "May 2026",
     pinned: true,
@@ -41,7 +54,6 @@ Automatically transforms raw customer feedback into structured product requireme
     title: "TEDxNIT Hamirpur Website",
     imageUrl: "/proj/tedx.webp",
     date: "Dec 2025",
-    pinned: true,
     description: `The official TEDx NIT Hamirpur 2026 website, designed and developed to represent the organization’s digital presence. Built with a modern, responsive interface, it delivers a seamless user experience across devices while showcasing events, speakers, and initiatives.`,
     tech: ["NEXT.JS", "TAILWIND", "ANIMATIONS"],
     status: "Completed" as const,
@@ -51,7 +63,7 @@ Automatically transforms raw customer feedback into structured product requireme
     ],
   },
   {
-    title: "PathBound",
+    title: "PathBound - Blockchain Path Payments",
     imageUrl: "/proj/pathbound.webp",
     date: "Dec 2025",
     description: `Problem:
@@ -67,7 +79,7 @@ PathBound addresses this by enabling rate-protected exchange intents using block
     ],
   },
   {
-    title: "ResumeFlow",
+    title: "ResumeFlow - AI Resume Generator",
     imageUrl: "/proj/resumeflow.webp",
     date: "Sept 2025",
     description: `An AI-powered CV generator that converts user input into a polished, ATS-optimized resume with professional formatting. It leverages real-time LaTeX compilation to provide instant preview and high-quality PDF output.`,
@@ -79,7 +91,7 @@ PathBound addresses this by enabling rate-protected exchange intents using block
     ],
   },
   {
-    title: "CodeSync",
+    title: "CodeSync - Real-Time Collaborative Editor",
     imageUrl: "/proj/codesync.webp",
     date: "Jan 2026",
     description: `Problem:
@@ -95,7 +107,7 @@ CodeSync provides a real-time collaborative coding environment where multiple de
     ],
   },
   {
-    title: "VeriJS",
+    title: "VeriJS - Static Analysis Tool",
     imageUrl: "/proj/verijs.webp",
     date: "Jan 2026",
     description: `Problem:
@@ -111,7 +123,7 @@ VeriJS provides a lightweight static analysis tool that detects issues without r
     ],
   },
   {
-    title: "Zenith",
+    title: "Zenith - Automated Task Allocator",
     imageUrl: "/proj/zenith.webp",
     date: "March 2026",
     description: `Problem:
@@ -126,7 +138,7 @@ Zenith automates task allocation by intelligently matching tasks with the most s
     ],
   },
   {
-    title: "GeoFinder",
+    title: "GeoFinder - WebGIS Spatial Query Platform",
     imageUrl: "/proj/geofinder.webp",
     date: "Feb 2026",
     description: `Problem:
@@ -142,7 +154,7 @@ GeoFinder addresses this by offering a WebGIS-based platform that integrates geo
     ],
   },
   {
-    title: "ECI-Secure Vote",
+    title: "ECI-Secure Vote - Blockchain Remote Voting",
     imageUrl: "/proj/eci.webp",
     date: "Oct 2025",
     description: `Problem:
@@ -157,7 +169,7 @@ ECI Secure Vote provides a secure remote voting platform powered by advanced cry
     ],
   },
   {
-    title: "RBAC",
+    title: "RBAC - Role-Based Access Control",
     imageUrl: "/proj/rbac.webp",
     date: "March 2026",
     description: `A Role-Based Access Control (RBAC) system designed to manage and enforce secure authentication and authorization across applications.`,
@@ -168,7 +180,7 @@ ECI Secure Vote provides a secure remote voting platform powered by advanced cry
     ],
   },
   {
-    title: "Interactive Tip Calculator",
+    title: "Interactive Tip Calculator - Bill Splitter",
     imageUrl: "/proj/interactive.webp",
     date: "Jul 2025",
     description: "A platform to calculate Tip amount and its distribution among every individual.",
@@ -180,7 +192,7 @@ ECI Secure Vote provides a secure remote voting platform powered by advanced cry
     ],
   },
   {
-    title: "GoCrawl",
+    title: "GoCrawl - High-Performance Web Crawler",
     imageUrl: "/proj/gocrawl.svg",
     date: "June 2026",
     description: `Problem:
@@ -196,7 +208,7 @@ GoCrawl is a high-performance, concurrent web crawler written in Go that uses Go
     ],
   },
   {
-    title: "CryptX",
+    title: "CryptX - Parallel File Encryption Engine",
     imageUrl: "/proj/cryptx.webp",
     date: "June 2026",
     description: `Problem:
@@ -216,7 +228,7 @@ const FormattedDescription = ({ text }: { text: string }) => {
   return (
     <div className="space-y-4 text-justify">
       {text.trim().split(/\n\s*\n/).map((para, i) => (
-        <div key={i} className="text-secondary text-[14px] leading-[1.7]">
+        <div key={i} className="text-secondary text-[13px] md:text-[14px] leading-[1.7]">
           {para.trim().split('\n').map((line, j) => {
             const highlightMatch = line.trim().match(/^(Problem:|Solution:)/i);
             if (highlightMatch) {
@@ -224,7 +236,7 @@ const FormattedDescription = ({ text }: { text: string }) => {
               const content = line.trim().slice(header.length);
               return (
                 <div key={j} className="mb-1">
-                  <span className="font-black text-foreground uppercase tracking-wider text-[11px] block mb-1.5 opacity-90">
+                  <span className="font-black text-foreground uppercase tracking-wider text-[10px] md:text-[11px] block mb-1.5 opacity-90">
                     {header}
                   </span>
                   <span className="block">{content.trim()}</span>
@@ -338,23 +350,23 @@ export default function ProjectsPage() {
                   </div>
 
                   {/* Card Content */}
-                  <div className="p-5 md:p-6 flex flex-col flex-1 relative z-10">
-                    <div className="flex items-center gap-2 mb-3 text-accent font-mono text-xs font-bold uppercase">
+                  <div className="p-4 md:p-6 flex flex-col flex-1 relative z-10">
+                    <div className="flex items-center gap-2 mb-2 md:mb-3 text-accent font-mono text-[10px] md:text-xs font-bold uppercase">
                       <div className="w-1.5 h-1.5 rounded-full bg-accent" />
                       {date}
                     </div>
 
                     <h3
-                      className="text-xl md:text-xl font-black text-foreground mb-2 line-clamp-2 group-hover:text-accent transition-colors"
+                      className="text-base sm:text-lg md:text-xl font-black text-foreground mb-2 line-clamp-2 group-hover:text-accent transition-colors leading-tight"
                     >
                       {project.title}
                     </h3>
 
-                    <div className="flex flex-wrap gap-2 mb-5">
+                    <div className="flex flex-wrap gap-1.5 mb-4 md:mb-5">
                       {project.tech.map((tag) => (
                         <span
                           key={tag}
-                          className="bg-accent/5 text-[10px] font-bold text-accent px-2.5 py-1 rounded-md border border-accent/10 uppercase tracking-wider"
+                          className="bg-accent/5 text-[9px] md:text-[10px] font-bold text-accent px-2 py-0.5 md:px-2.5 md:py-1 rounded-md border border-accent/10 uppercase tracking-wider"
                         >
                           {tag}
                         </span>
@@ -393,11 +405,11 @@ export default function ProjectsPage() {
                         href={demoLink || githubLink || "#"}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-accent text-[11px] font-black tracking-widest uppercase flex items-center gap-1.5 group/link hover:text-accent/80 transition-colors"
+                        className="text-accent text-[10px] md:text-[11px] font-black tracking-widest uppercase flex items-center gap-1.5 group/link hover:text-accent/80 transition-colors"
                         onClick={(e) => e.stopPropagation()}
                       >
                         VIEW PROJECT
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 md:w-3.5 md:h-3.5">
                           <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
                         </svg>
                       </a>
@@ -416,14 +428,14 @@ export default function ProjectsPage() {
           >
             <div className="absolute inset-0 bg-black/60 backdrop-blur-md" />
             <div
-              className="relative bg-card border-[1.5px] border-edge rounded-[32px] p-8 md:p-10 max-w-lg w-full shadow-[0_20px_60px_rgba(0,0,0,0.5)] animate-[modalIn_0.2s_ease-out]"
+              className="relative bg-card border-[1.5px] border-edge rounded-[32px] p-5 md:p-10 max-w-lg w-full shadow-[0_20px_60px_rgba(0,0,0,0.5)] animate-[modalIn_0.2s_ease-out] max-h-[85vh] flex flex-col"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={() => setInfoOpen(null)}
-                className="absolute top-6 right-6 w-10 h-10 rounded-full border border-edge bg-transparent text-foreground cursor-pointer flex items-center justify-center hover:bg-accent/10 hover:text-accent hover:border-accent transition-all duration-200"
+                className="absolute top-4 right-4 md:top-6 md:right-6 w-8 h-8 md:w-10 md:h-10 rounded-full border border-edge bg-transparent text-foreground cursor-pointer flex items-center justify-center hover:bg-accent/10 hover:text-accent hover:border-accent transition-all duration-200 z-10"
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="md:w-5 md:h-5">
                   <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
               </button>
@@ -433,29 +445,29 @@ export default function ProjectsPage() {
                 if (!project) return null;
                 return (
                   <>
-                    <div className="mb-8 pr-12">
-                      <h3 className="text-3xl font-black text-foreground mb-4">
+                    <div className="mb-4 md:mb-6 pr-10 md:pr-12 shrink-0">
+                      <h3 className="text-xl md:text-3xl font-black text-foreground mb-3 md:mb-4 leading-tight">
                         {project.title}
                       </h3>
-                      <div className="flex gap-2 flex-wrap">
+                      <div className="flex gap-1.5 md:gap-2 flex-wrap">
                         {project.tech.map((tag) => (
-                          <span key={tag} className="bg-accent/10 text-accent px-3 py-1.5 rounded-full text-[11px] font-bold border border-accent/20 tracking-wider">
+                          <span key={tag} className="bg-accent/10 text-accent px-2.5 py-1 md:px-3 md:py-1.5 rounded-full text-[10px] md:text-[11px] font-bold border border-accent/20 tracking-wider">
                             {tag}
                           </span>
                         ))}
                       </div>
                     </div>
-                    <div className="mt-8 pt-8 border-t border-edge/20">
+                    <div className="flex-1 overflow-y-auto pr-2 min-h-0 py-3 md:py-4 border-t border-edge/20">
                       <FormattedDescription text={project.description} />
                     </div>
-                    <div className="mt-8 pt-8 border-t border-edge/20 flex gap-4">
-                      {project.links.map(link => (
+                    <div className="mt-4 md:mt-6 pt-4 md:pt-6 border-t border-edge/20 flex gap-3 md:gap-4 shrink-0">
+                      {project.links.filter(link => link.href).map(link => (
                         <a
                           key={link.label}
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-card-alt border border-edge hover:border-accent hover:text-accent transition-colors text-sm font-bold tracking-wider"
+                          className="flex-1 flex items-center justify-center gap-2 py-2.5 md:py-3 rounded-xl bg-card-alt border border-edge hover:border-accent hover:text-accent transition-colors text-xs md:text-sm font-bold tracking-wider"
                         >
                           {link.label}
                         </a>

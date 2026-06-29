@@ -46,14 +46,14 @@ const workHistory = [
 
 const projects = [
   {
-    title: "GoCrawl",
-    shortDescription: "A high-performance web crawler built in Go that discovers links concurrently at scale.",
+    title: "GoSearch",
+    shortDescription: "A high-performance search engine built in Go with concurrent indexing and BM25 ranking.",
     description: `Problem:
-    Crawling the web at high throughput can be slow and inefficient when implemented sequentially, leading to long runtimes, missed links, and duplicate visits.
+    Building a search engine that can quickly index and search web pages requires solving complex challenges in information retrieval, such as handling large-scale concurrent indexing, ranking documents accurately, and optimizing query performance.
 
     Solution:
-    GoCrawl is a high-performance, concurrent web crawler written in Go that uses Goroutines and Channels for parallel fetching, efficient URL deduplication, and configurable traversal limits to maximize throughput while avoiding duplicates.`,
-    github: "https://github.com/Saurabh-1785/gocrawl.git",
+    GoSearch is a high-performance search engine built from scratch in Go. It features concurrent indexing, an inverted index, BM25 ranking, Boolean search, snippet generation, binary-compressed postings, and a REST API, demonstrating core information retrieval concepts.`,
+    github: "https://github.com/saurabh-1785/go-search.git",
     demo: "",
     status: "Completed" as const,
   },

@@ -176,22 +176,23 @@ const CodeSyncIcon = () => (
   </svg>
 );
 
-const GoCrawlIcon = () => (
-  <svg className="w-20 h-16 text-accent drop-shadow-[0_0_12px_rgba(16,185,129,0.6)]" viewBox="0 0 120 80" fill="none" stroke="currentColor" strokeWidth="1.6">
-    <defs>
-      <linearGradient id="gc" x1="0" x2="1">
-        <stop offset="0%" stopColor="#0ea5a1" />
-        <stop offset="100%" stopColor="#10b981" />
-      </linearGradient>
-    </defs>
-    <path d="M18 56 L44 36 L68 48 L86 30" stroke="url(#gc)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-    <circle cx="44" cy="36" r="4" fill="url(#gc)" />
-    <circle cx="68" cy="48" r="3" fill="url(#gc)" />
-    <circle cx="86" cy="30" r="3" fill="url(#gc)" />
-    <g transform="translate(82,40)">
-      <circle cx="8" cy="8" r="12" fill="none" stroke="url(#gc)" strokeWidth="2" />
-      <path d="M18 18 L28 28" stroke="url(#gc)" strokeWidth="2" strokeLinecap="round" />
-    </g>
+const GoSearchIcon = () => (
+  <svg
+    className="w-14 h-14 text-accent drop-shadow-[0_0_10px_rgba(20,184,166,0.6)] transition-all duration-300 group-hover:scale-105"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    {/* Magnifying Glass Outer */}
+    <circle cx="11" cy="11" r="8" />
+    <path d="m21 21-4.3-4.3" />
+    {/* Document/Index Lines Inside */}
+    <line x1="7" y1="8" x2="15" y2="8" />
+    <line x1="7" y1="11" x2="12" y2="11" />
+    <line x1="7" y1="14" x2="15" y2="14" />
   </svg>
 );
 
@@ -349,7 +350,7 @@ export default function ProjectGrid({
                 <div className="relative z-10 flex items-center justify-center">
                   {project.title === "GoLink" && <LinkIcon />}
                   {project.title === "APE AI" && <BrainIcon />}
-                  {project.title === "GoCrawl" && <GoCrawlIcon />}
+                  {project.title === "GoSearch" && <GoSearchIcon />}
                   {project.title === "ResumeFlow" && <ResumeIcon />}
                 </div>
 

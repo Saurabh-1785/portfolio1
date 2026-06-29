@@ -19,11 +19,11 @@ export default function StatsBar() {
           <p className="text-white/80 text-xs md:text-sm lg:text-base font-semibold mt-2 md:mt-3">Projects</p>
         </div>
         <div className="flex flex-col items-center justify-center text-center p-2">
-          <p className="text-3xl md:text-4xl lg:text-[44px] font-extrabold text-white leading-none tracking-tight">400+</p>
+          <p className="text-3xl md:text-4xl lg:text-[44px] font-extrabold text-white leading-none tracking-tight">450+</p>
           <p className="text-white/80 text-xs md:text-sm lg:text-base font-semibold mt-2 md:mt-3">GitHub Commits</p>
         </div>
         <div className="flex flex-col items-center justify-center text-center p-2">
-          <p className="text-3xl md:text-4xl lg:text-[44px] font-extrabold text-white leading-none tracking-tight">450+</p>
+          <p className="text-3xl md:text-4xl lg:text-[44px] font-extrabold text-white leading-none tracking-tight">525+</p>
           <p className="text-white/80 text-xs md:text-sm lg:text-base font-semibold mt-2 md:mt-3">Contributions Made</p>
         </div>
         <div className="flex flex-col items-center justify-center text-center p-2">
